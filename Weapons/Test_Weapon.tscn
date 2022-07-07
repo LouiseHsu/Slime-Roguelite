@@ -6,4 +6,7 @@
 [node name="Test_Weapon" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Projectile" parent="." index="0"]
+visible = false
+
 [editable path="Projectile"]

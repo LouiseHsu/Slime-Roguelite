@@ -25,3 +25,8 @@ func _on_Hurtbox_area_entered(area):
 	print("destroyed")
 	queue_free();
 	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	queue_free();
+	pass # Replace with function body.
