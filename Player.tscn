@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Characters/Basic Charakter Spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://Skill.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Weapons/Test_Weapon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Characters/Shadow.png" type="Texture" id=4]
 [ext_resource path="res://Stats.gd" type="Script" id=5]
@@ -9,7 +9,8 @@
 [ext_resource path="res://UI/green_bar.png" type="Texture" id=7]
 [ext_resource path="res://PlayerUI.gd" type="Script" id=8]
 [ext_resource path="res://UI/orange_bar.png" type="Texture" id=9]
-[ext_resource path="res://Mushroom_Weapon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Weapon_Stats.gd" type="Script" id=10]
+[ext_resource path="res://Weapons/Side_Weapon.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=13]
 resource_name = "Invincibility"
@@ -202,9 +203,9 @@ texture = ExtResource( 1 )
 hframes = 4
 vframes = 4
 
-[node name="Apple_Weapon" parent="." instance=ExtResource( 2 )]
+[node name="Test_Weapon" parent="." instance=ExtResource( 2 )]
 
-[node name="Mushroom_Weapon" parent="." instance=ExtResource( 10 )]
+[node name="Side_Weapon" parent="." instance=ExtResource( 11 )]
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 0
@@ -241,11 +242,11 @@ margin_bottom = 38.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture_progress = ExtResource( 9 )
 
+[node name="Weapon_Stats" type="Node" parent="."]
+script = ExtResource( 10 )
+
 [connection signal="damage_taken" from="." to="PlayerUI" method="_on_Player_damage_taken"]
 [connection signal="player_ready" from="." to="PlayerUI" method="_on_Player_player_ready"]
 [connection signal="level_up" from="Stats" to="." method="_on_Stats_level_up"]
 [connection signal="update_exp_bar" from="Stats" to="PlayerUI" method="_on_Stats_update_exp_bar"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
-
-[editable path="Apple_Weapon"]
-[editable path="Apple_Weapon/Projectile"]

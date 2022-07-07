@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer;
-onready var skill = $Apple_Weapon;
+onready var skill = $Side_Weapon;
 onready var skill2 = $Mushroom_Weapon;
 onready var stats = $Stats;
 
@@ -33,8 +33,8 @@ const top_speed = 50;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stats.init(10, 5); # health, damage
-	skill.init(1, stats.damage, 6);  # fire rate, damage 
-	skill2.init(3, stats.damage, 19);  # fire rate, damage, sprite frame
+	skill.init(1, stats.damage);  # fire rate, damage 
+
 	# should i make a seperate player stats that reads from a json?
 	stats.connect("death", self, "on_death");
 	emit_signal("player_ready");
@@ -49,10 +49,10 @@ func handle_input():
 	
 	if Input.is_action_pressed("Attack") :
 		skill.activate(Direction[State.direction]);
-		skill2.activate(Direction[State.direction]);
+
 	else :
 		skill.deactivate();
-		skill2.deactivate();
+
 	
 func handle_movement():
 	var temp_velocity = Vector2(0, 0);

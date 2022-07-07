@@ -5,6 +5,8 @@ extends Node;
 # var a = 2
 # var b = "text"
 
+onready var sprite = $Projectile/Sprite;
+
 var fire_rate = 0;
 var damage = 0;
 var sprite_frame = 0;
@@ -14,10 +16,10 @@ var active = false;
 var firing_timer = 0;
 
 
-func init(fire_rate, damage, sprite_frame):
+func init(fire_rate, damage):
 	self.fire_rate = fire_rate;
 	self.damage = damage;
-	self.sprite_frame = sprite_frame;
+	self.sprite_frame = sprite.frame;
 	
 	
 func activate(direction):

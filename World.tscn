@@ -1,10 +1,55 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tilesets/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://EnemySpawner.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World.gd" type="Script" id=4]
 [ext_resource path="res://PauseMenu.gd" type="Script" id=5]
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends Node;
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+var fire_rate = 0;
+var damage = 0;
+var sprite_frame = 0;
+var p_velocity = Vector2(0, 0);
+
+var active = false;
+var firing_timer = 0;
+
+
+func init(fire_rate, damage, sprite_frame):
+	self.fire_rate = fire_rate;
+	self.damage = damage;
+	self.sprite_frame = sprite_frame;
+	
+	
+func activate(direction):
+	self.active = true;
+	self.p_velocity = direction * 100;
+	
+func deactivate():
+	self.active = false;
+	self.firing_timer = 0;
+
+func _physics_process(delta):
+	if (self.active):
+		if (firing_timer <= 0):
+			var projectile = load(\"res://Projectile.tscn\").instance();
+			projectile.init(self.p_velocity, self.damage, sprite_frame);
+			projectile.visible = true;
+			add_child(projectile);
+			projectile.transform = get_parent().global_transform;
+			self.firing_timer = float(1)/self.fire_rate;
+		else :
+			self.firing_timer -= delta;
+			
+"
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -13,6 +58,9 @@ script = ExtResource( 4 )
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 3 )]
 position = Vector2( 159, 105 )
+
+[node name="Mushroom_Weapon" parent="Player" index="5"]
+script = SubResource( 14 )
 
 [node name="Projectile" parent="Player/Mushroom_Weapon" index="0"]
 visible = false
@@ -43,6 +91,16 @@ margin_bottom = 33.0
 tab_size = 6
 text = "Pause
 "
+
+[node name="LevelUpMenu" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="LevelUpMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PopupMenu" type="PopupMenu" parent="LevelUpMenu/Control"]
+margin_right = 48.0
+margin_bottom = 88.0
 
 [connection signal="damage_taken" from="Player" to="." method="_on_Player_damage_taken"]
 [connection signal="level_up" from="Player/Stats" to="." method="_on_Stats_level_up"]
