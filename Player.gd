@@ -49,7 +49,9 @@ func handle_input():
 	
 	if Input.is_action_pressed("Attack") :
 		skill.activate(Direction[State.direction]);
-		print(State.direction);
+	
+	if Input.is_action_just_released("Restart") :
+		get_tree().reload_current_scene();
 
 	else :
 		skill.deactivate();
@@ -111,8 +113,7 @@ func get_max_health():
 
 func on_death():
 	queue_free();
-
-
+	get_tree().reload_current_scene();
 
 func _on_Stats_level_up():
 	pass # Replace with function body.
