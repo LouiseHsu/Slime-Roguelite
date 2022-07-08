@@ -17,6 +17,6 @@ func _ready():
 
 
 func _on_Stats_level_up():
-	print("ketetetetetet");
+	print("Level Up");
 	
 	pass # Replace with function body.

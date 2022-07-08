@@ -26,7 +26,6 @@ func _on_Player_player_ready():
 
 
 func _on_Stats_update_exp_bar(curr, next):
-	print("HELLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLO")
 	expBar.max_value = next;
 	expBar.value = curr;
 	pass # Replace with function body.

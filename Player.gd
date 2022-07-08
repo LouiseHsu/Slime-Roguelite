@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer;
 onready var skill = $Side_Weapon;
-onready var skill2 = $Mushroom_Weapon;
+
 onready var stats = $Stats;
 
 signal damage_taken;
@@ -49,6 +49,7 @@ func handle_input():
 	
 	if Input.is_action_pressed("Attack") :
 		skill.activate(Direction[State.direction]);
+		print(State.direction);
 
 	else :
 		skill.deactivate();
@@ -109,7 +110,6 @@ func get_max_health():
 	return stats.max_health;
 
 func on_death():
-	print("hiiiii")
 	queue_free();
 
 

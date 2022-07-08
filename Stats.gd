@@ -28,8 +28,6 @@ func take_damage(damage):
 func gain_exp(experience):
 	curr_exp += experience;
 	
-	print("HAEFRJHSDKAFHKSD")
-	#print(health);
 	if (curr_exp > next_level_exp):
 		level += 1;
 		emit_signal("level_up");

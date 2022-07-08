@@ -31,8 +31,12 @@ func deactivate():
 	self.firing_timer = 0;
 
 func _physics_process(delta):
+	spawn_projectiles(delta);
+	
+func spawn_projectiles(delta):
 	if (self.active):
 		if (firing_timer <= 0):
+			print("hi");
 			var projectile = load("res://Projectile.tscn").instance();
 			projectile.init(self.p_velocity, self.damage, sprite_frame);
 			projectile.visible = true;
@@ -40,5 +44,4 @@ func _physics_process(delta):
 			projectile.transform = get_parent().global_transform;
 			self.firing_timer = float(1)/self.fire_rate;
 		else :
-			self.firing_timer -= delta;
-			
+			self.firing_timer -= delta;	

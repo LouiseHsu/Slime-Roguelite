@@ -58,7 +58,5 @@ margin_bottom = 88.0
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_Timer_timeout"]
 
 [editable path="Player"]
-[editable path="Player/Test_Weapon"]
-[editable path="Player/Test_Weapon/Projectile"]
 [editable path="Player/Side_Weapon"]
 [editable path="Player/Side_Weapon/Projectile"]
