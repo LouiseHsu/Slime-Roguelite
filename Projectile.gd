@@ -16,6 +16,7 @@ func init(velocity, damage, frame):
 	self.damage = damage;
 	$Hurtbox.init(damage) 
 	$Sprite.frame = frame;
+	self.visible = true;
 
 func _physics_process(delta):
 	curr_velocity = move_and_slide(velocity);

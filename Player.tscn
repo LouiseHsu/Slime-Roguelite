@@ -202,8 +202,6 @@ texture = ExtResource( 1 )
 hframes = 4
 vframes = 4
 
-[node name="Side_Weapon" parent="." instance=ExtResource( 11 )]
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 0
 script = ExtResource( 6 )
@@ -241,6 +239,10 @@ texture_progress = ExtResource( 9 )
 
 [node name="Weapon_Stats" type="Node" parent="."]
 script = ExtResource( 10 )
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Side_Weapon" parent="Weapons" instance=ExtResource( 11 )]
 
 [connection signal="damage_taken" from="." to="PlayerUI" method="_on_Player_damage_taken"]
 [connection signal="player_ready" from="." to="PlayerUI" method="_on_Player_player_ready"]

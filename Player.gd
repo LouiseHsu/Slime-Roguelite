@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer;
-onready var skill = $Side_Weapon;
+
+onready var weapons = $Weapons;
 
 onready var stats = $Stats;
 
@@ -13,6 +14,7 @@ var State = {
 	direction = DOWN,
 	velocity = Vector2(0, 0)
 }
+
 
 enum {
 	UP,
@@ -33,28 +35,36 @@ const top_speed = 50;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stats.init(10, 5); # health, damage
-	skill.init(1, stats.damage);  # fire rate, damage 
+#	skill.init(1, stats.damage);  # fire rate, damage 
+
+	for w in weapons.get_children():
+		w.init(1, stats.damage);
 
 	# should i make a seperate player stats that reads from a json?
 	stats.connect("death", self, "on_death");
 	emit_signal("player_ready");
+	
 	pass 
 
 func _physics_process(delta):
 	handle_input();
 	handle_movement();
 	handle_animation();
+	activate_weapons();
 	
+func activate_weapons():
+	for w in weapons.get_children():
+		w.activate(Direction[State.direction]);
+
 func handle_input():
 	
-	if Input.is_action_pressed("Attack") :
-		skill.activate(Direction[State.direction]);
-	
+#	if Input.is_action_pressed("Attack") :
+		
 	if Input.is_action_just_released("Restart") :
 		get_tree().reload_current_scene();
 
-	else :
-		skill.deactivate();
+#	else :
+#		skill.deactivate();
 
 	
 func handle_movement():
