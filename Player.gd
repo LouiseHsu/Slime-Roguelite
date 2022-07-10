@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer;
-
 onready var weapons = $Weapons;
-
 onready var stats = $Stats;
+
+const test_weapon = preload("res://Weapons/Test_Weapon.tscn");
+
 
 signal damage_taken;
 signal player_ready;
@@ -14,7 +15,6 @@ var State = {
 	direction = DOWN,
 	velocity = Vector2(0, 0)
 }
-
 
 enum {
 	UP,
@@ -126,4 +126,8 @@ func on_death():
 	get_tree().reload_current_scene();
 
 func _on_Stats_level_up():
-	pass # Replace with function body.
+	var weapon = test_weapon.instance();
+	print("here");
+	weapons.call_deferred("add_child", weapon);
+	print("here2");
+	weapon.init(1, stats.damage);

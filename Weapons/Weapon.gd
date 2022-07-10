@@ -16,10 +16,13 @@ var active = false;
 var firing_timer = 0;
 
 
+func _ready():
+	self.sprite_frame = sprite.frame;
+	
 func init(fire_rate, damage):
 	self.fire_rate = fire_rate;
 	self.damage = damage;
-	self.sprite_frame = sprite.frame;
+	
 	
 	
 func activate(direction):

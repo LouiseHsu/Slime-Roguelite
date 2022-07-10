@@ -62,7 +62,7 @@ text = "Pause
 
 [node name="LevelUpMenu" type="CanvasLayer" parent="."]
 pause_mode = 2
-layer = 0
+layer = -1
 
 [node name="MarginContainer" type="MarginContainer" parent="LevelUpMenu"]
 anchor_right = 1.0

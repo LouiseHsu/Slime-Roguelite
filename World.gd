@@ -18,5 +18,5 @@ func _ready():
 
 func _on_Stats_level_up():
 	print("Level Up");
-	get_tree().paused = true;
+#	get_tree().paused = true;
 	pass # Replace with function body.
