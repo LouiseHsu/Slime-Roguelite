@@ -125,9 +125,14 @@ func on_death():
 	queue_free();
 	get_tree().reload_current_scene();
 
-func _on_Stats_level_up():
+#func _on_Stats_level_up():
+#	var weapon = test_weapon.instance();
+#	weapons.call_deferred("add_child", weapon);
+#	weapon.init(1, stats.damage);
+
+
+func _on_Option_1_upgrade(skill):
 	var weapon = test_weapon.instance();
-	print("here");
 	weapons.call_deferred("add_child", weapon);
-	print("here2");
 	weapon.init(1, stats.damage);
+	pass # Replace with function body.

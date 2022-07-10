@@ -1,10 +1,6 @@
-extends Node2D
+extends CanvasLayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+onready var optionscontainer = $ "MarginContainer/Background/VBoxContainer/OptionContainer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +13,11 @@ func _ready():
 
 
 func _on_Stats_level_up():
-	print("Level Up");
-	get_tree().paused = true;
+	self.layer = self.layer * -1;
+	
+	
+	for option in optionscontainer.get_children():
+		
+		option.associate_weapon(randi()%10+1);
+	
 	pass # Replace with function body.
