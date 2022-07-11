@@ -13,6 +13,3 @@ func _ready():
 func _button_pressed():
 	print(weapon);
 	emit_signal("upgrade", weapon);
-	
-
-	

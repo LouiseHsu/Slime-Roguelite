@@ -1,10 +1,5 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var velocity = Vector2(0, 0);
 
 var curr_velocity = Vector2(0, 0);
@@ -23,9 +18,6 @@ func _physics_process(delta):
 
 func _on_Hurtbox_area_entered(area):
 	queue_free();
-	pass # Replace with function body.
-
 
 func _on_Timer_timeout():
 	queue_free();
-	pass # Replace with function body.

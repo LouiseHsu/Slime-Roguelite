@@ -1,10 +1,5 @@
 extends Node;
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var sprite = $Projectile/Sprite;
 
 var fire_rate = 0;
@@ -22,8 +17,6 @@ func _ready():
 func init(fire_rate, damage):
 	self.fire_rate = fire_rate;
 	self.damage = damage;
-	
-	
 	
 func activate(direction):
 	self.active = true;
