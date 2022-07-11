@@ -211,6 +211,7 @@ position = Vector2( 0, 1 )
 shape = SubResource( 12 )
 
 [node name="Invincibility" type="Timer" parent="."]
+one_shot = true
 
 [node name="PlayerUI" type="Control" parent="."]
 margin_left = -18.0
@@ -249,3 +250,4 @@ script = ExtResource( 10 )
 [connection signal="level_up" from="Stats" to="." method="_on_Stats_level_up"]
 [connection signal="update_exp_bar" from="Stats" to="PlayerUI" method="_on_Stats_update_exp_bar"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_Hitbox_area_exited"]

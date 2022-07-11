@@ -3,9 +3,9 @@ extends KinematicBody2D
 onready var animationPlayer = $AnimationPlayer;
 onready var weapons = $Weapons;
 onready var stats = $Stats;
+onready var invincibility_timer = $Invincibility;
 
 const test_weapon = preload("res://Weapons/Test_Weapon.tscn");
-
 
 signal damage_taken;
 signal player_ready;
@@ -15,6 +15,9 @@ var State = {
 	direction = DOWN,
 	velocity = Vector2(0, 0)
 }
+
+var bodies_in_collision = [];
+var is_invincible = false;
 
 enum {
 	UP,
@@ -47,6 +50,7 @@ func _physics_process(delta):
 	handle_movement();
 	handle_animation();
 	activate_weapons();
+	take_damage();
 	
 func activate_weapons():
 	for w in weapons.get_children():
@@ -97,8 +101,23 @@ func handle_animation():
 			
 func _on_Hitbox_area_entered(area):
 	if (area.has_method("get_damage")):
-		stats.take_damage(area.get_damage());
-		emit_signal("damage_taken");
+		bodies_in_collision.append(area);
+		
+func _on_Hitbox_area_exited(area):
+	if (area.has_method("get_damage")):
+		bodies_in_collision.remove(bodies_in_collision.find(area));
+		
+func take_damage():
+	if (bodies_in_collision.size() > 0):
+		if (invincibility_timer.time_left > 0):
+			print(invincibility_timer.time_left)
+			return;
+		else: 
+			stats.take_damage(bodies_in_collision[0].get_damage());
+			emit_signal("damage_taken");
+			print("takign damage");
+			invincibility_timer.start();
+		
 		
 func killed_enemy(experience):
 	stats.gain_exp(experience);
@@ -120,4 +139,3 @@ func _on_LevelUpMenu_chose_weapon(chosen_weapon):
 				var weapon = test_weapon.instance();
 				weapons.call_deferred("add_child", weapon);
 				weapon.init(1, stats.damage);
-
