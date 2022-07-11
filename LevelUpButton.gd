@@ -1,6 +1,6 @@
 extends Button
 
-signal upgrade(skill)
+signal upgrade(weapon)
 
 var weapon;
 
