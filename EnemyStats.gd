@@ -24,14 +24,3 @@ func take_damage(damage):
 		health = 0;
 		emit_signal("death");
 		print("death");
-
-func gain_exp(experience):
-	curr_exp += experience;
-	
-	if (curr_exp > next_level_exp):
-		level += 1;
-		emit_signal("level_up");
-		curr_exp -= next_level_exp;
-		next_level_exp = level * 100;
-	emit_signal("update_exp_bar", curr_exp, next_level_exp)
-#	CHANGE SO THAT THERE MAX EXP FOR EASIER BAR SETTING

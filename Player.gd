@@ -36,7 +36,7 @@ const Direction = [
 const top_speed = 50;
 
 func _ready():
-	stats.init(10, 5); # health, damage
+	stats.init(30, 5); # health, damage
 
 	for w in weapons.get_children():
 		w.init(1, stats.damage);
@@ -110,10 +110,10 @@ func _on_Hitbox_area_exited(area):
 func take_damage():
 	if (bodies_in_collision.size() > 0):
 		if (invincibility_timer.time_left > 0):
-			print(invincibility_timer.time_left)
 			return;
 		else: 
-			stats.take_damage(bodies_in_collision[0].get_damage());
+			for body in bodies_in_collision:
+				stats.take_damage(bodies_in_collision[0].get_damage());
 			emit_signal("damage_taken");
 			print("takign damage");
 			invincibility_timer.start();

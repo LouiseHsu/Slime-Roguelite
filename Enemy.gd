@@ -11,8 +11,9 @@ onready var hurtbox = $Hurtbox;
 func _ready():
 	stats.connect("death", self, "on_death");
 	self.connect('drop_exp', get_parent().get_node("Player"), "killed_enemy");
-	stats.damage = 10;
-	hurtbox.damage = 3;
+	
+	stats.init(10, 3);
+	hurtbox.damage = stats.damage;
 
 func _physics_process(delta):
 	move_and_slide(ai.get_next_direction() * VELOCITY)
