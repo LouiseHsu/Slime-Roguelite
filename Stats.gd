@@ -2,6 +2,7 @@ extends Node
 
 signal death;
 signal update_exp_bar(curr, next);
+signal update_score(points);
 signal level_up;
 
 var max_health = 30;
@@ -34,4 +35,5 @@ func gain_exp(experience):
 		curr_exp -= next_level_exp;
 		next_level_exp = level * 100;
 	emit_signal("update_exp_bar", curr_exp, next_level_exp)
+	emit_signal("update_score", experience);
 #	CHANGE SO THAT THERE MAX EXP FOR EASIER BAR SETTING

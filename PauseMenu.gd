@@ -11,7 +11,7 @@ onready var canvas = $Control/CanvasLayer;
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS;
 #	control.visible = false;
-#	canvas.layer = -1;
+	canvas.layer = -1;
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Escape"):
