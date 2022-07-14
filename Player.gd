@@ -6,6 +6,8 @@ onready var stats = $Stats;
 onready var invincibility_timer = $Invincibility;
 
 const test_weapon = preload("res://Weapons/Test_Weapon.tscn");
+const circle_weapon = preload("res://Weapons/Circle_Weapon.tscn");
+const side_weapon = preload("res://Weapons/Side_Weapon.tscn");
 
 signal damage_taken;
 signal player_ready;
@@ -137,5 +139,15 @@ func _on_LevelUpMenu_chose_weapon(chosen_weapon):
 	match (chosen_weapon):
 		"test_weapon":
 				var weapon = test_weapon.instance();
+				weapons.call_deferred("add_child", weapon);
+				weapon.init(1, stats.damage);
+	match (chosen_weapon):
+		"side_weapon":
+				var weapon = side_weapon.instance();
+				weapons.call_deferred("add_child", weapon);
+				weapon.init(1, stats.damage);
+	match (chosen_weapon):
+		"circle_weapon":
+				var weapon = circle_weapon.instance();
 				weapons.call_deferred("add_child", weapon);
 				weapon.init(1, stats.damage);
