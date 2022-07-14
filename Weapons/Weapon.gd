@@ -32,7 +32,7 @@ func _physics_process(delta):
 func spawn_projectiles(delta):
 	if (self.active):
 		if (firing_timer <= 0):
-			var projectile = load("res://Projectile.tscn").instance();
+			var projectile = load("res://Projectiles/Projectile.tscn").instance();
 			projectile.init(self.p_velocity, self.damage, sprite_frame);
 			add_child(projectile);
 			projectile.transform = get_parent().global_transform;
