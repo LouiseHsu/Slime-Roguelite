@@ -5,10 +5,6 @@ onready var weapons = $Weapons;
 onready var stats = $Stats;
 onready var invincibility_timer = $Invincibility;
 
-const test_weapon = preload("res://Weapons/Test_Weapon.tscn");
-const circle_weapon = preload("res://Weapons/Circle_Weapon.tscn");
-const side_weapon = preload("res://Weapons/Side_Weapon.tscn");
-
 signal damage_taken;
 signal player_ready;
 signal level_up;
@@ -39,9 +35,6 @@ const top_speed = 50;
 
 func _ready():
 	stats.init(30, 5); # health, damage
-
-	for w in weapons.get_children():
-		w.init(1, stats.damage);
 
 	# should i make a seperate player stats that reads from a json?
 	stats.connect("death", self, "on_death");
@@ -134,20 +127,6 @@ func get_max_health():
 func on_death():
 	queue_free();
 	get_tree().reload_current_scene();
-
+	
 func _on_LevelUpMenu_chose_weapon(chosen_weapon):
-	match (chosen_weapon):
-		"test_weapon":
-				var weapon = test_weapon.instance();
-				weapons.call_deferred("add_child", weapon);
-				weapon.init(1, stats.damage);
-	match (chosen_weapon):
-		"side_weapon":
-				var weapon = side_weapon.instance();
-				weapons.call_deferred("add_child", weapon);
-				weapon.init(1, stats.damage);
-	match (chosen_weapon):
-		"circle_weapon":
-				var weapon = circle_weapon.instance();
-				weapons.call_deferred("add_child", weapon);
-				weapon.init(1, stats.damage);
+	weapons.add_weapon(chosen_weapon);
