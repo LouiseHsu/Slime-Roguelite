@@ -6,6 +6,7 @@ var fire_rate = 0;
 var damage = 0;
 var sprite_frame = 0;
 var p_velocity = Vector2(0, 0);
+var level = 1;
 
 var active = false;
 var firing_timer = 0;
@@ -15,8 +16,8 @@ func _ready():
 	self.sprite_frame = sprite.frame;
 	
 func init(fire_rate, damage):
-	self.fire_rate = fire_rate;
-	self.damage = damage;
+	self.fire_rate = fire_rate * (1 + ((level - 1) * 0.1));
+	self.damage = damage * (1 + ((level - 1) * 0.1));
 	
 func activate(direction):
 	self.active = true;
@@ -25,6 +26,10 @@ func activate(direction):
 func deactivate():
 	self.active = false;
 	self.firing_timer = 0;
+	
+func level_up():
+	level+= 1;
+	init(self.fire_rate, self.damage);
 
 func _physics_process(delta):
 	spawn_projectiles(delta);

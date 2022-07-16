@@ -110,7 +110,6 @@ func take_damage():
 			for body in bodies_in_collision:
 				stats.take_damage(bodies_in_collision[0].get_damage());
 			emit_signal("damage_taken");
-			print("takign damage");
 			invincibility_timer.start();
 		
 		

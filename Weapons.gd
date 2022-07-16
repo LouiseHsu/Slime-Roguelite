@@ -6,41 +6,26 @@ const side_weapon = preload("res://Weapons/Side_Weapon.tscn");
 
 onready var stats = $"../Stats"
 
+const ALL_WEAPONS = {
+	"test_weapon" : test_weapon,
+	"side_weapon" : side_weapon,
+	"circle_weapon": circle_weapon
+}
+
 var weapon_list = {
-	"test_weapon" : false,
-	"side_weapon" : false,
-	"circle_weapon": false
+	"test_weapon" : null,
+	"side_weapon" : null,
+	"circle_weapon": null
 }
 
 func _ready():
 	add_weapon("test_weapon");
 
 func add_weapon(chosen_weapon):
-	match (chosen_weapon):
-		"test_weapon":
-			if (weapon_list[chosen_weapon]):
-				print("already here")
-			else:
-				weapon_list[chosen_weapon] = true;
-				var weapon = test_weapon.instance();
-				self.call_deferred("add_child", weapon);
-				weapon.init(1, stats.damage); 
-#			fire rate needs to be dynamic	:/
-	match (chosen_weapon):
-		"side_weapon":
-			if (weapon_list[chosen_weapon]):
-				print("already here")
-			else:
-				weapon_list[chosen_weapon] = true;
-				var weapon = test_weapon.instance();
-				self.call_deferred("add_child", weapon);
-				weapon.init(1, stats.damage); 
-	match (chosen_weapon):
-		"circle_weapon":
-			if (weapon_list[chosen_weapon]):
-				print("already here")
-			else:
-				weapon_list[chosen_weapon] = true;
-				var weapon = test_weapon.instance();
-				self.call_deferred("add_child", weapon);
-				weapon.init(1, stats.damage); 
+	if (weapon_list[chosen_weapon]):
+		weapon_list[chosen_weapon].level_up();
+	else:
+		var weapon = ALL_WEAPONS[chosen_weapon].instance();
+		self.call_deferred("add_child", weapon);
+		weapon.init(1, stats.damage); 
+		weapon_list[chosen_weapon] = weapon;

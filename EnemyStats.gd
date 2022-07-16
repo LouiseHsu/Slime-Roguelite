@@ -18,9 +18,7 @@ func init(health, damage):
 
 func take_damage(damage):
 	health -= damage;
-	print(damage)
-	print(health)
+	print(str("Enemy takes ", damage, " damage"))
 	if (health <= 0):
 		health = 0;
 		emit_signal("death");
-		print("death");
