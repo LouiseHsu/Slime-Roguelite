@@ -13,6 +13,7 @@ func _ready():
 #	control.visible = false;
 	canvas.layer = -1;
 	
+	
 func _process(delta):
 	if Input.is_action_just_pressed("Escape"):
 		get_tree().paused = !get_tree().paused;

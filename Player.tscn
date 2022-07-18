@@ -216,8 +216,8 @@ one_shot = true
 [node name="PlayerUI" type="Control" parent="."]
 margin_left = -18.0
 margin_top = 2.0
-margin_right = 22.0
-margin_bottom = 42.0
+margin_right = 16.0
+margin_bottom = 16.0
 script = ExtResource( 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="PlayerUI"]
@@ -246,7 +246,6 @@ script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = -2
-z_as_relative = false
 current = true
 
 [connection signal="damage_taken" from="." to="PlayerUI" method="_on_Player_damage_taken"]

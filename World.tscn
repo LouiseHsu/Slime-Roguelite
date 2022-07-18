@@ -24,6 +24,9 @@ tile_data = PoolIntArray( -65538, 0, 196609, -65537, 0, 196610, -131072, 0, 1966
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 3 )]
 position = Vector2( 159, 105 )
 
+[node name="PlayerUI" parent="Player" index="6"]
+margin_bottom = 7.0
+
 [node name="EnemySpawner" type="Node" parent="."]
 script = ExtResource( 2 )
 
@@ -31,6 +34,7 @@ script = ExtResource( 2 )
 autostart = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
+pause_mode = 2
 layer = -1
 script = ExtResource( 5 )
 
@@ -56,11 +60,11 @@ self_modulate = Color( 0, 0, 0, 1 )
 show_behind_parent = true
 margin_left = 140.0
 margin_top = 89.0
-margin_right = 180.0
-margin_bottom = 129.0
+margin_right = 184.0
+margin_bottom = 104.0
 tab_size = 6
-text = "Pause
-"
+text = "Pause"
+scroll_active = false
 
 [node name="LevelUpMenu" type="CanvasLayer" parent="."]
 pause_mode = 2
