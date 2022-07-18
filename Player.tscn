@@ -244,6 +244,11 @@ script = ExtResource( 10 )
 [node name="Weapons" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = -2
+z_as_relative = false
+current = true
+
 [connection signal="damage_taken" from="." to="PlayerUI" method="_on_Player_damage_taken"]
 [connection signal="player_ready" from="." to="PlayerUI" method="_on_Player_player_ready"]
 [connection signal="level_up" from="Stats" to="." method="_on_Stats_level_up"]

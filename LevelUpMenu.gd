@@ -7,7 +7,7 @@ func _ready():
 	pass
 
 func _on_Stats_level_up():
-	self.layer = 1;
+	self.layer = 5;
 	get_tree().paused = true;
 	optionscontainer.get_children()[0].associate_weapon("side_weapon");
 	optionscontainer.get_children()[1].associate_weapon("circle_weapon");
