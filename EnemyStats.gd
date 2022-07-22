@@ -4,9 +4,9 @@ signal death;
 signal update_exp_bar(curr, next);
 signal level_up;
 
-var max_health = 30;
+export var max_health = 30;
 var health = max_health;
-var damage = 5;
+export var damage = 5;
 var level = 1;
 var next_level_exp = 100;
 var curr_exp = 0;
