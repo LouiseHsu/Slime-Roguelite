@@ -1,5 +1,7 @@
 extends Node
 
+onready var enemy_list = $EnemyList;
+
 var width = 0;
 var height = 0;
 var num_enemy_types = 0;
@@ -9,6 +11,9 @@ var centre = Vector2.ZERO;
 func _ready():
 	width = Constants.VIEWPORT_WIDTH/2;
 	height = Constants.VIEWPORT_HEIGHT/2
+	
+	for node in get_node("EnemyList").get_children():
+		disable_enemy(node);
 	num_enemy_types = get_node("EnemyList").get_child_count() - 1;
 
 func _on_Timer_timeout():
@@ -35,12 +40,21 @@ func get_random_enemy():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var num = rng.randi_range(0, num_enemy_types);
-	print(num);
-	var enemy = get_node("EnemyList").get_child(num).duplicate();
-	enemy.visible = true;
+	var enemy = enemy_list.get_child(num).duplicate();
+	enable_enemy(enemy);
 	return enemy;
 	
 func _on_Camera2D_camera_pos(pos):
 	centre = pos;
-	print(centre.y - height)
-	print(centre.y)
+	
+func disable_enemy(enemy):
+	enemy.get_node("Hitbox/CollisionShape2D").disabled = true;
+	enemy.get_node("Hurtbox/Collision").disabled = true;
+	enemy.get_node("PhysicalHitbox").disabled = true;
+	enemy.visible = false;
+	
+func enable_enemy(enemy):
+	enemy.get_node("Hitbox/CollisionShape2D").disabled = false;
+	enemy.get_node("Hurtbox/Collision").disabled = false;
+	enemy.get_node("PhysicalHitbox").disabled = false;
+	enemy.visible = true;

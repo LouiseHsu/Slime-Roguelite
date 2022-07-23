@@ -104,12 +104,14 @@ func _on_Hitbox_area_exited(area):
 		
 func take_damage():
 	if (bodies_in_collision.size() > 0):
+		print("Took Damage")
 		if (invincibility_timer.time_left > 0):
 			return;
 		else: 
 			for body in bodies_in_collision:
 				stats.take_damage(bodies_in_collision[0].get_damage());
 			emit_signal("damage_taken");
+			print("Took Damage")
 			invincibility_timer.start();
 		
 		

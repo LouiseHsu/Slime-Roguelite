@@ -39,10 +39,10 @@ autostart = true
 [node name="EnemyList" type="Node" parent="EnemySpawner"]
 
 [node name="GreenSlime" parent="EnemySpawner/EnemyList" instance=ExtResource( 17 )]
-visible = false
+position = Vector2( -64, 0 )
 
 [node name="BlueSlime" parent="EnemySpawner/EnemyList" instance=ExtResource( 16 )]
-visible = false
+position = Vector2( -64, 0 )
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 pause_mode = 2
