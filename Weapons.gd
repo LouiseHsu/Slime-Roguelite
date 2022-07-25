@@ -1,25 +1,25 @@
 extends Node2D
 
-const test_weapon = preload("res://Weapons/Test_Weapon.tscn");
+const front_weapon = preload("res://Weapons/front_weapon.tscn");
 const circle_weapon = preload("res://Weapons/Circle_Weapon.tscn");
 const side_weapon = preload("res://Weapons/Side_Weapon.tscn");
 
 onready var stats = $"../Stats"
 
 const ALL_WEAPONS = {
-	"test_weapon" : test_weapon,
+	"front_weapon" : front_weapon,
 	"side_weapon" : side_weapon,
 	"circle_weapon": circle_weapon
 }
 
 var weapon_list = {
-	"test_weapon" : null,
+	"front_weapon" : null,
 	"side_weapon" : null,
 	"circle_weapon": null
 }
 
 func _ready():
-	add_weapon("test_weapon");
+	add_weapon("front_weapon");
 
 func add_weapon(chosen_weapon):
 	if (weapon_list[chosen_weapon]):
