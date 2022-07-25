@@ -12,6 +12,8 @@ func _on_Stats_level_up():
 	optionscontainer.get_children()[0].associate_weapon("side_weapon");
 	optionscontainer.get_children()[1].associate_weapon("circle_weapon");
 	optionscontainer.get_children()[2].associate_weapon("test_weapon");
+	
+	optionscontainer.get_children()[0].icon = load("res://UI/Side_Weapon.png")
 
 
 func _on_ConfirmButton_confirm(weapon):
