@@ -26,6 +26,7 @@ run/main_scene="res://World.tscn"
 [autoload]
 
 Constants="*res://Constants.gd"
+PlayerStats="*res://Player_Stats.gd"
 
 [display]
 

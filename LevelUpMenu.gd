@@ -19,8 +19,6 @@ func _on_Stats_level_up():
 	
 	var weapon_options = get_3_random_weapons();
 	
-	
-	
 	option1.associate_weapon(weapon_options[0]);
 	option2.associate_weapon(weapon_options[1]);
 	option3.associate_weapon(weapon_options[2]);
@@ -28,7 +26,6 @@ func _on_Stats_level_up():
 	option1.icon = load("res://UI/" + weapon_options[0] + ".png")
 	option2.icon = load("res://UI/" + weapon_options[1] + ".png")
 	option3.icon = load("res://UI/" + weapon_options[2] + ".png")
-
 
 func _on_ConfirmButton_confirm(weapon):
 	self.layer = -1;

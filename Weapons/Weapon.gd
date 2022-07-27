@@ -28,7 +28,7 @@ func deactivate():
 	self.firing_timer = 0;
 	
 func level_up():
-	level+= 1;
+	level += 1;
 	init(self.fire_rate, self.damage);
 
 func _physics_process(delta):

@@ -4,8 +4,6 @@ const front_weapon = preload("res://Weapons/front_weapon.tscn");
 const circle_weapon = preload("res://Weapons/Circle_Weapon.tscn");
 const side_weapon = preload("res://Weapons/Side_Weapon.tscn");
 
-onready var stats = $"../Stats"
-
 const ALL_WEAPONS = {
 	"front_weapon" : front_weapon,
 	"side_weapon" : side_weapon,
@@ -24,8 +22,10 @@ func _ready():
 func add_weapon(chosen_weapon):
 	if (weapon_list[chosen_weapon]):
 		weapon_list[chosen_weapon].level_up();
+		
 	else:
 		var weapon = ALL_WEAPONS[chosen_weapon].instance();
 		self.call_deferred("add_child", weapon);
-		weapon.init(1, stats.damage); 
+		PlayerStats.add_weapon(chosen_weapon);
+		weapon.init(1, PlayerStats.damage); 
 		weapon_list[chosen_weapon] = weapon;

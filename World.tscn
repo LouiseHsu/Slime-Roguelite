@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Tilesets/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://EnemySpawner.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Constants.gd" type="Script" id=15]
 [ext_resource path="res://Enemies/BlueSlime.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Enemies/GreenSlime.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Player_Stats.gd" type="Script" id=18]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -27,7 +28,7 @@ tile_data = PoolIntArray( -65538, 0, 196609, -65537, 0, 196610, -131072, 0, 1966
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 3 )]
 position = Vector2( 159, 105 )
 
-[node name="PlayerUI" parent="Player" index="6"]
+[node name="PlayerUI" parent="Player" index="5"]
 margin_bottom = 7.0
 
 [node name="EnemySpawner" type="Node" parent="."]
@@ -176,12 +177,13 @@ rect_scale = Vector2( 0.5, 0.5 )
 tab_size = 6
 text = "0"
 
+[node name="Player_Stats" type="Node" parent="."]
+script = ExtResource( 18 )
+
 [node name="Constants" type="Node" parent="."]
 script = ExtResource( 15 )
 
 [connection signal="damage_taken" from="Player" to="." method="_on_Player_damage_taken"]
-[connection signal="level_up" from="Player/Stats" to="." method="_on_Stats_level_up"]
-[connection signal="level_up" from="Player/Stats" to="LevelUpMenu" method="_on_Stats_level_up"]
 [connection signal="camera_pos" from="Player/Camera2D" to="EnemySpawner" method="_on_Camera2D_camera_pos"]
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_Timer_timeout"]
 [connection signal="chose_weapon" from="LevelUpMenu" to="Player" method="_on_LevelUpMenu_chose_weapon"]
@@ -189,5 +191,6 @@ script = ExtResource( 15 )
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 2" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_2_upgrade"]
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 3" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_3_upgrade"]
 [connection signal="confirm" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" to="LevelUpMenu" method="_on_ConfirmButton_confirm"]
+[connection signal="update_exp_bar" from="Player_Stats" to="Player/PlayerUI" method="_on_Player_Stats_update_exp_bar"]
 
 [editable path="Player"]

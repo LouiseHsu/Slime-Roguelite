@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer;
 onready var weapons = $Weapons;
-onready var stats = $Stats;
 onready var invincibility_timer = $Invincibility;
 
 signal damage_taken;
@@ -34,10 +33,7 @@ const Direction = [
 const top_speed = 50;
 
 func _ready():
-	stats.init(30, 5); # health, damage
-
 	# should i make a seperate player stats that reads from a json?
-	stats.connect("death", self, "on_death");
 	emit_signal("player_ready");
 
 func _physics_process(delta):
@@ -108,22 +104,19 @@ func take_damage():
 		if (invincibility_timer.time_left > 0):
 			return;
 		else: 
+			var health = 0;
 			for body in bodies_in_collision:
-				stats.take_damage(bodies_in_collision[0].get_damage());
-			emit_signal("damage_taken");
-			print("Took Damage")
-			invincibility_timer.start();
-		
+				health = PlayerStats.take_damage(bodies_in_collision[0].get_damage());
+				emit_signal("damage_taken");
+				if (health == 0) :
+					on_death();
+				else :
+					invincibility_timer.start();
+			
 		
 func killed_enemy(experience):
-	stats.gain_exp(experience);
-
-
-func get_health():
-	return stats.health;
-	
-func get_max_health():
-	return stats.max_health;
+	print("hi 2")
+	PlayerStats.gain_exp(experience);
 
 func on_death():
 	queue_free();
