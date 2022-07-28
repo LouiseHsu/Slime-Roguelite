@@ -16,8 +16,21 @@ var health = max_health;
 var owned_weapons = [];
 
 func add_weapon(weapon):
-	owned_weapons[weapon].level = 1;
+	var wep_struct = {
+		"name" : weapon,
+		"level" : 1
+	}
 	
+	owned_weapons.append(wep_struct);
+	print(owned_weapons);
+
+func level_up_weapon(weapon):
+	for wep in owned_weapons :
+		if (weapon == wep["name"]) :
+			wep["level"] = wep["level"] + 1;
+		pass;
+
+	print(owned_weapons);
 
 
 func take_damage(damage):
@@ -28,7 +41,7 @@ func take_damage(damage):
 
 func gain_exp(experience):
 	curr_exp += experience;
-	
+	print("hehehehe")
 	if (curr_exp > next_level_exp):
 		level += 1;
 		emit_signal("level_up");

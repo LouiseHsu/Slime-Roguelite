@@ -26,6 +26,8 @@ func add_weapon(chosen_weapon):
 	else:
 		var weapon = ALL_WEAPONS[chosen_weapon].instance();
 		self.call_deferred("add_child", weapon);
-		PlayerStats.add_weapon(chosen_weapon);
 		weapon.init(1, PlayerStats.damage); 
+		
+		PlayerStats.add_weapon(chosen_weapon);
+		
 		weapon_list[chosen_weapon] = weapon;

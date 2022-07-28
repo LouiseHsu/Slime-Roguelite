@@ -6,11 +6,35 @@ onready var option3 = $ "MarginContainer/Background/VBoxContainer/OptionContaine
 signal chose_weapon(weapon);
 
 func _ready():
+	PlayerStats.connect("level_up", self, "_on_Player_Stats_level_up");
 	self.get_child(0).visible = false;
 	pass
 
-func _on_Stats_level_up():
-	# bring level up menu to the front and unhide
+func _on_ConfirmButton_confirm(weapon):
+	self.layer = -1;
+	self.get_child(0).visible = false;
+	get_tree().paused = false;
+	emit_signal("chose_weapon", weapon);
+
+func get_3_random_weapons():
+	var list = range(0,Constants.WEAPONS_LIST.size())
+	var sample = []
+	
+	for i in range(3):
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var random_num = rng.randi_range(0, list.size() - 1)
+		
+		var x = Constants.WEAPONS_LIST[list[random_num]];
+		sample.append(x)
+		list.remove(list[random_num])
+
+	return sample;
+
+
+func _on_Player_Stats_level_up():
+	print("hello")
+		# bring level up menu to the front and unhide
 	self.layer = 5;
 	self.get_child(0).visible = true;
 	
@@ -26,21 +50,3 @@ func _on_Stats_level_up():
 	option1.icon = load("res://UI/" + weapon_options[0] + ".png")
 	option2.icon = load("res://UI/" + weapon_options[1] + ".png")
 	option3.icon = load("res://UI/" + weapon_options[2] + ".png")
-
-func _on_ConfirmButton_confirm(weapon):
-	self.layer = -1;
-	get_tree().paused = false;
-	emit_signal("chose_weapon", weapon);
-
-func get_3_random_weapons():
-	var list = range(0,Constants.WEAPONS_LIST.size())
-	var sample = []
-	for i in range(3):
-		
-		var random_num = randi() % list.size();
-		print(list[random_num])
-		var x = Constants.WEAPONS_LIST[list[random_num]];
-		sample.append(x)
-		list.remove(list[random_num])
-
-	return sample;

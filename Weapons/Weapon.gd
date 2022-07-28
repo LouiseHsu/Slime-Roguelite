@@ -29,6 +29,8 @@ func deactivate():
 	
 func level_up():
 	level += 1;
+	PlayerStats.level_up_weapon(self.name);
+	print(self.name)
 	init(self.fire_rate, self.damage);
 
 func _physics_process(delta):
