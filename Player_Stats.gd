@@ -4,6 +4,7 @@ signal death;
 signal update_exp_bar(curr, next);
 signal update_score(points);
 signal level_up;
+signal weapons_update;
 
 var max_health = 30;
 var damage = 10;
@@ -22,14 +23,15 @@ func add_weapon(weapon):
 	}
 	
 	owned_weapons.append(wep_struct);
+	emit_signal("weapons_update");
 	print(owned_weapons);
 
 func level_up_weapon(weapon):
 	for wep in owned_weapons :
 		if (weapon == wep["name"]) :
 			wep["level"] = wep["level"] + 1;
-		pass;
 
+	emit_signal("weapons_update");
 	print(owned_weapons);
 
 

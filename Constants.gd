@@ -13,3 +13,8 @@ const WEAPON_2_NAME = "circle_weapon";
 const WEAPON_3_NAME = "front_weapon";
 
 const WEAPONS_LIST = [WEAPON_1_NAME, WEAPON_2_NAME, WEAPON_3_NAME]
+
+func delete_children(node):
+	for n in node.get_children():
+		n.queue_free()
+	

@@ -22,6 +22,7 @@ func _ready():
 func add_weapon(chosen_weapon):
 	if (weapon_list[chosen_weapon]):
 		weapon_list[chosen_weapon].level_up();
+		PlayerStats.level_up_weapon(chosen_weapon);
 		
 	else:
 		var weapon = ALL_WEAPONS[chosen_weapon].instance();
@@ -29,5 +30,5 @@ func add_weapon(chosen_weapon):
 		weapon.init(1, PlayerStats.damage); 
 		
 		PlayerStats.add_weapon(chosen_weapon);
-		
+		print("shouldve hit here")
 		weapon_list[chosen_weapon] = weapon;

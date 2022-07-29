@@ -27,7 +27,7 @@ func get_3_random_weapons():
 		
 		var x = Constants.WEAPONS_LIST[list[random_num]];
 		sample.append(x)
-		list.remove(list[random_num])
+		list.remove(random_num)
 
 	return sample;
 
