@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fox-down.png-c89965a61d409bd8903af7b71d4866e5.stex"
+path="res://.import/fox-spritesheet.png-73ada6016719229f4853410d3801b3b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/fox-down.png"
-dest_files=[ "res://.import/fox-down.png-c89965a61d409bd8903af7b71d4866e5.stex" ]
+source_file="res://Characters/fox-spritesheet.png"
+dest_files=[ "res://.import/fox-spritesheet.png-73ada6016719229f4853410d3801b3b1.stex" ]
 
 [params]
 

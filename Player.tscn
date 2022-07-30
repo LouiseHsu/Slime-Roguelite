@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Characters/Basic Charakter Spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Weapons.gd" type="Script" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Characters/Shadow.png" type="Texture" id=4]
+[ext_resource path="res://Characters/fox-spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://Hitbox.gd" type="Script" id=6]
 [ext_resource path="res://UI/green_bar.png" type="Texture" id=7]
 [ext_resource path="res://PlayerUI.gd" type="Script" id=8]
@@ -17,7 +17,7 @@ resource_name = "Invincibility"
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,139 +26,143 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0 ]
+"values": [ 13 ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "Running-Down"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3 ]
+"values": [ 14, 15, 16, 13 ]
 }
 
 [sub_resource type="Animation" id=8]
 resource_name = "Running-Left"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 11 ]
+"values": [ 20, 21, 22, 19 ]
 }
 
 [sub_resource type="Animation" id=9]
 resource_name = "Running-Right"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 14, 15 ]
+"values": [ 3, 4, 5, 2 ]
 }
 
 [sub_resource type="Animation" id=7]
 resource_name = "Running-Up"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7 ]
+"values": [ 8, 9, 10, 7 ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "Standing-Down"
+length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 11, 12 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Standing-Left"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 18, 17 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Standing-Right"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 0 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "Standing-Left"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 9, 8 ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "Standing-Right"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 13, 12 ]
-}
-
 [sub_resource type="Animation" id=6]
 resource_name = "Standing-Up"
+length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("YSort/Sprite:frame")
+tracks/0/path = NodePath("YSort/FoxSpritesheet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 5, 4 ]
+"values": [ 6, 7 ]
 }
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -189,15 +193,16 @@ shape = SubResource( 2 )
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Shadow" type="Sprite" parent="YSort"]
-position = Vector2( 0, 6 )
-texture = ExtResource( 4 )
+[node name="FoxSpritesheet" type="Sprite" parent="YSort"]
+position = Vector2( 0, -1 )
+texture = ExtResource( 5 )
+hframes = 23
+frame = 13
 
-[node name="Sprite" type="Sprite" parent="YSort"]
-z_index = 1
-texture = ExtResource( 1 )
-hframes = 4
-vframes = 4
+[node name="Shadow" type="Sprite" parent="YSort/FoxSpritesheet"]
+show_behind_parent = true
+position = Vector2( 0, 9 )
+texture = ExtResource( 4 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 0
@@ -211,9 +216,9 @@ one_shot = true
 
 [node name="PlayerUI" type="Control" parent="."]
 margin_left = -18.0
-margin_top = 2.0
+margin_top = 5.0
 margin_right = 16.0
-margin_bottom = 16.0
+margin_bottom = 19.0
 script = ExtResource( 8 )
 
 [node name="Health Bar" type="TextureProgress" parent="PlayerUI"]
