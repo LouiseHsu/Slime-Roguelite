@@ -40,6 +40,7 @@ func get_random_enemy():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var num = rng.randi_range(0, num_enemy_types);
+	print(num)
 	var enemy = enemy_list.get_child(num).duplicate();
 	enable_enemy(enemy);
 	return enemy;

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fox-right.png-df81f46f8709365577f04ccb4b04bb15.stex"
+path="res://.import/pink-slime.png-ce6a1dc568665fca399a3ba91608c595.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fox-right.png"
-dest_files=[ "res://.import/fox-right.png-df81f46f8709365577f04ccb4b04bb15.stex" ]
+source_file="res://Characters/pink-slime.png"
+dest_files=[ "res://.import/pink-slime.png-ce6a1dc568665fca399a3ba91608c595.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

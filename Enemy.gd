@@ -8,12 +8,15 @@ signal drop_score(amount);
 onready var ai = $AI;
 onready var stats = $Stats;
 onready var hurtbox = $Hurtbox;
+onready var animation = $AnimationPlayer;
 
 func _ready():
 	stats.connect("death", self, "on_death");
 	self.connect('drop_exp', get_parent().get_node("Player"), "killed_enemy");
 	self.connect('drop_score', get_parent().get_node("ScoreUI"), "update_score");
 	
+	
+	animation.play("Neutral")
 	stats.init(10, 3);
 	hurtbox.damage = stats.damage;
 
