@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Tilesets/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://EnemySpawner.gd" type="Script" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Enemies/GreenSlime.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Player_Stats.gd" type="Script" id=18]
 [ext_resource path="res://Weapon_Display.gd" type="Script" id=19]
+[ext_resource path="res://Enemies/PinkSlime.tscn" type="PackedScene" id=20]
+[ext_resource path="res://MapLoader.gd" type="Script" id=21]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -213,11 +215,17 @@ position = Vector2( -64, 0 )
 visible = false
 position = Vector2( -65, -1 )
 
+[node name="PinkSlime" parent="EnemySpawner/EnemyList" instance=ExtResource( 20 )]
+visible = false
+
 [node name="Player_Stats" type="Node" parent="."]
 script = ExtResource( 18 )
 
 [node name="Constants" type="Node" parent="."]
 script = ExtResource( 15 )
+
+[node name="MapLoader" type="Node" parent="."]
+script = ExtResource( 21 )
 
 [connection signal="chose_weapon" from="LevelUpMenu" to="Player" method="_on_LevelUpMenu_chose_weapon"]
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 1" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_1_upgrade"]

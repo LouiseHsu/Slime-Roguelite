@@ -30,8 +30,9 @@ func level_up_weapon(weapon):
 	for wep in owned_weapons :
 		if (weapon == wep["name"]) :
 			wep["level"] = wep["level"] + 1;
+			emit_signal("weapons_update");
 
-	emit_signal("weapons_update");
+
 	print(owned_weapons);
 
 
