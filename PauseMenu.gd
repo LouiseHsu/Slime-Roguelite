@@ -10,14 +10,16 @@ onready var canvas = $Control/CanvasLayer;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS;
-#	control.visible = false;
+	control.visible = false;
 	canvas.layer = -1;
 	
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Escape"):
-		get_tree().paused = !get_tree().paused;
-		canvas.layer = canvas.layer * -1;
+		if (canvas.layer == -1):
+			control.visible = true;
+			get_tree().paused = true;
+			canvas.layer = 1;
 	pass # Replace with function body.
 
 

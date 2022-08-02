@@ -24,8 +24,10 @@
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Grass" parent="." instance=ExtResource( 1 )]
-tile_data = PoolIntArray( -131084, 0, 131074 )
+[node name="MapGenerator" type="Node" parent="."]
+
+[node name="Grass" parent="MapGenerator" instance=ExtResource( 1 )]
+z_index = -1
 
 [node name="Weapon_Display" type="CanvasLayer" parent="."]
 script = ExtResource( 19 )
