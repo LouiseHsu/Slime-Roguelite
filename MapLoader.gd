@@ -14,7 +14,7 @@ func _ready():
 #func _process(delta):
 #	pass
 func InstanciateTilemap():
-	var set = load("res://Tilesets/Grass.tscn");
+	var set = load("res://Tilesets/Grass.tscn::1");
 
 	var map = TileMap.new();
 	map.tile_set = set;
@@ -30,11 +30,11 @@ func InstanciateTilemap():
 #				verticalIndex,
 #				1
 #			);
-	for x in range(16):
-		for y in range(16):
-			map.set_cell(x, y, 1)
+	for x in range(32):
+		for y in range(32):
+			map.set_cell(map.map_to_world(Vector2(x, y)).x,map.map_to_world(Vector2(x, y)).y, 1)
 
 	map.update_bitmask_region();
-
-	get_tree().get_root().add_child(map);
+	
+	get_tree().get_root().get_node("World").add_child(map);
 
