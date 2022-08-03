@@ -4,8 +4,11 @@ var VIEWPORT_WIDTH = ProjectSettings.get_setting("display/window/size/width");
 var VIEWPORT_HEIGHT = ProjectSettings.get_setting("display/window/size/height")	
 
 # ENEMY
-var BLUE_SLIME = "res://Enemies/BlueSlime.tscn"
-var GREEN_SLIME = "res://Enemies/GreenSlime.tscn"
+const BLUE_SLIME = "res://Enemies/BlueSlime.tscn"
+const GREEN_SLIME = "res://Enemies/GreenSlime.tscn"
+const PINK_SLIME = "res://Enemies/PinkSlime.tscn"
+
+const ENEMYS_LIST = [BLUE_SLIME, GREEN_SLIME, PINK_SLIME];
 
 # WEAPON
 const WEAPON_1_NAME = "side_weapon";

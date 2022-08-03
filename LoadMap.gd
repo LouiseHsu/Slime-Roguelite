@@ -1,11 +1,10 @@
-extends TileMap
+extends Node
 
-
+onready var grass = $Grass
 var _tileset
-onready var grass = $Grass;
 
 func _ready():
-	_tileset = get_tileset()
+	_tileset = grass.get_tileset()
 	set_process_input(true)
 	
 	var map = load("res://Maps/map.png")
@@ -18,28 +17,30 @@ func _ready():
 
 			set_pixel_type(pixel, x, y)
 		
-	update_bitmask_region()
+	grass.update_bitmask_region()
 	
 func set_pixel_type(pixel, x, y):
 	# black
 	if (pixel[0] == 0 && pixel[1] == 0 && pixel[2] == 0):
-		set_cellv(Vector2(x, y), 0)
+		grass.set_cellv(Vector2(x, y), 0)
 		pass;
 	# red
 	elif (pixel[0] == 1 && pixel[1] == 0 && pixel[2] == 0):
 		print(pixel)
 		
-		set_cellv(Vector2(x, y), 0)
+		grass.set_cellv(Vector2(x, y), 0)
 		var spawner = load("res://EnemySpawner.tscn").instance();
-		spawner.init(map_to_world(Vector2(x, y)));
+		print(Vector2(x, y));
+		spawner.init(grass.map_to_world(Vector2(x, y)));
 		
-		get_tree().get_root().get_node("World").add_child(spawner);
+		get_parent().call_deferred("add_child", spawner)
 		print("hi")
+		print(get_parent().get_children())
 		pass;
 	# green
 	elif (pixel[0] == 0 && pixel[1] == 1 && pixel[2] == 0):
-		set_cellv(Vector2(x, y), 0)
-		print(Vector2(x, y));
+		grass.set_cellv(Vector2(x, y), 0)
+		
 		get_parent().get_node("Player").global_position = grass.map_to_world(Vector2(x, y));
 
 		pass;
