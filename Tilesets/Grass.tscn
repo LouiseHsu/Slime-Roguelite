@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Tilesets/Assets/Grass.png" type="Texture" id=1]
-[ext_resource path="res://Tilesets/LoadMap.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0.315559, 1.71434, 0.315559, 1.71434, 16, 0, 16 )
@@ -164,4 +163,3 @@ points = PoolVector2Array( 0, 13.8804, 15.8622, 13.8804, 15.8622, 16, 0, 16 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-script = ExtResource( 2 )

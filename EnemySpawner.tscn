@@ -10,6 +10,7 @@ extents = Vector2( 12, 8 )
 script = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="EnemyList" type="Node" parent="."]
 

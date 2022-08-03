@@ -21,10 +21,12 @@
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource( 3 )]
+[node name="Entity_Order" type="YSort" parent="."]
+
+[node name="Player" parent="Entity_Order" groups=["Player"] instance=ExtResource( 3 )]
 position = Vector2( 156, 86 )
 
-[node name="PlayerUI" parent="Player" index="5"]
+[node name="PlayerUI" parent="Entity_Order/Player" index="5"]
 margin_bottom = 7.0
 
 [node name="MapGenerator" type="Node" parent="."]
@@ -32,7 +34,6 @@ script = ExtResource( 2 )
 
 [node name="Grass" parent="MapGenerator" instance=ExtResource( 1 )]
 z_index = -1
-script = null
 
 [node name="Weapon_Display" type="CanvasLayer" parent="."]
 script = ExtResource( 19 )
@@ -205,14 +206,14 @@ script = ExtResource( 18 )
 [node name="Constants" type="Node" parent="."]
 script = ExtResource( 15 )
 
-[connection signal="damage_taken" from="Player" to="." method="_on_Player_damage_taken"]
-[connection signal="chose_weapon" from="LevelUpMenu" to="Player" method="_on_LevelUpMenu_chose_weapon"]
+[connection signal="damage_taken" from="Entity_Order/Player" to="." method="_on_Player_damage_taken"]
+[connection signal="chose_weapon" from="LevelUpMenu" to="Entity_Order/Player" method="_on_LevelUpMenu_chose_weapon"]
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 1" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_1_upgrade"]
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 2" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_2_upgrade"]
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 3" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_3_upgrade"]
 [connection signal="confirm" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" to="LevelUpMenu" method="_on_ConfirmButton_confirm"]
 [connection signal="level_up" from="Player_Stats" to="LevelUpMenu" method="_on_Player_Stats_level_up"]
-[connection signal="update_exp_bar" from="Player_Stats" to="Player/PlayerUI" method="_on_Player_Stats_update_exp_bar"]
+[connection signal="update_exp_bar" from="Player_Stats" to="Entity_Order/Player/PlayerUI" method="_on_Player_Stats_update_exp_bar"]
 [connection signal="weapons_update" from="Player_Stats" to="Weapon_Display" method="_on_Player_Stats_weapons_update"]
 
-[editable path="Player"]
+[editable path="Entity_Order/Player"]

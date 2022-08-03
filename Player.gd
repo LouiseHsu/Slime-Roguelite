@@ -100,7 +100,6 @@ func _on_Hitbox_area_exited(area):
 		
 func take_damage():
 	if (bodies_in_collision.size() > 0):
-		print("Took Damage")
 		if (invincibility_timer.time_left > 0):
 			return;
 		else: 
@@ -115,7 +114,6 @@ func take_damage():
 			
 		
 func killed_enemy(experience):
-	print("hi 2")
 	PlayerStats.gain_exp(experience);
 
 func on_death():

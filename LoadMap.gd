@@ -20,27 +20,20 @@ func _ready():
 	grass.update_bitmask_region()
 	
 func set_pixel_type(pixel, x, y):
-	# black
+	# black - normal land
 	if (pixel[0] == 0 && pixel[1] == 0 && pixel[2] == 0):
 		grass.set_cellv(Vector2(x, y), 0)
-		pass;
-	# red
+
+	# red - set spawners
 	elif (pixel[0] == 1 && pixel[1] == 0 && pixel[2] == 0):
-		print(pixel)
-		
 		grass.set_cellv(Vector2(x, y), 0)
-		var spawner = load("res://EnemySpawner.tscn").instance();
-		print(Vector2(x, y));
-		spawner.init(grass.map_to_world(Vector2(x, y)));
 		
-		get_parent().call_deferred("add_child", spawner)
-		print("hi")
-		print(get_parent().get_children())
-		pass;
-	# green
+		var spawner = load("res://EnemySpawner.tscn").instance();
+		spawner.init(grass.map_to_world(Vector2(x, y)));
+		get_parent().get_node("Entity_Order").call_deferred("add_child", spawner)
+		
+	# green - set player pos
 	elif (pixel[0] == 0 && pixel[1] == 1 && pixel[2] == 0):
 		grass.set_cellv(Vector2(x, y), 0)
 		
-		get_parent().get_node("Player").global_position = grass.map_to_world(Vector2(x, y));
-
-		pass;
+		get_parent().get_node("Entity_Order/Player").global_position = grass.map_to_world(Vector2(x, y));

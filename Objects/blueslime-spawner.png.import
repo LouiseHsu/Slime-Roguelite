@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/map.png-3ec3a75c2e160f0a5396e6e7fba188af.stex"
+path="res://.import/blueslime-spawner.png-d83cd5c54751807a6b954fdf0ca3a858.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Maps/map.png"
-dest_files=[ "res://.import/map.png-3ec3a75c2e160f0a5396e6e7fba188af.stex" ]
+source_file="res://Objects/blueslime-spawner.png"
+dest_files=[ "res://.import/blueslime-spawner.png-d83cd5c54751807a6b954fdf0ca3a858.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

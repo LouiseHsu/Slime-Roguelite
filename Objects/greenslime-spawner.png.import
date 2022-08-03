@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Front_Weapon.png-4456a9e7027089ba48d61170f5182775.stex"
+path="res://.import/greenslime-spawner.png-b25e83695452425fed546acd2e0d9f1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Front_Weapon.png"
-dest_files=[ "res://.import/Front_Weapon.png-4456a9e7027089ba48d61170f5182775.stex" ]
+source_file="res://Objects/greenslime-spawner.png"
+dest_files=[ "res://.import/greenslime-spawner.png-b25e83695452425fed546acd2e0d9f1c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

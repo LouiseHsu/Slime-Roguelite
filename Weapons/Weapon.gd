@@ -11,6 +11,7 @@ var level = 1;
 var active = false;
 var firing_timer = 0;
 
+var projectile_scene = preload("res://Projectiles/Projectile.tscn") # Path to bullet scene
 
 func _ready():
 	self.sprite_frame = sprite.frame;
