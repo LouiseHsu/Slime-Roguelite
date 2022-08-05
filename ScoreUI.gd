@@ -8,5 +8,6 @@ func _ready():
 	score_ui.text = str(0);
 
 func update_score(value):
+	print("hi")
 	score = score + value;
 	score_ui.text = str(score);

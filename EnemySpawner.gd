@@ -49,9 +49,7 @@ func _on_Timer_timeout():
 	var y = sin(angle) * 30;
 	
 	enemy.global_position = self.global_position + Vector2(x, y);
-	
 
-	
 	get_parent().add_child(enemy);
 
 func get_random_enemy():

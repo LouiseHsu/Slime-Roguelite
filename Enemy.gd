@@ -13,7 +13,7 @@ onready var animation = $AnimationPlayer;
 func _ready():
 	stats.connect("death", self, "on_death");
 	self.connect('drop_exp', get_parent().get_node("Player"), "killed_enemy");
-	self.connect('drop_score', get_parent().get_node("ScoreUI"), "update_score");
+	self.connect('drop_score', get_parent().get_parent().get_node("ScoreUI"), "update_score");
 	
 	
 	animation.play("Neutral")

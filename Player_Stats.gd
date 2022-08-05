@@ -32,9 +32,7 @@ func level_up_weapon(weapon):
 			wep["level"] = wep["level"] + 1;
 			emit_signal("weapons_update");
 
-
 	print(owned_weapons);
-
 
 func take_damage(damage):
 	health -= damage;
