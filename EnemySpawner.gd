@@ -2,12 +2,14 @@ extends StaticBody2D
 
 onready var enemy_list = $EnemyList;
 onready var timer = $Timer;
-onready var sprite = $Sprite;
+onready var sprite = $Sprite
+onready var stats = $Stats;
 
 var width = 0;
 var height = 0;
 var num_enemy_types = 0;
 var enemy_type = 0;
+var health = 100;
 
 var centre = Vector2.ZERO;
 var type;
@@ -72,3 +74,15 @@ func enable_enemy(enemy):
 	enemy.get_node("Hurtbox/Collision").disabled = false;
 	enemy.get_node("PhysicalHitbox").disabled = false;
 	enemy.visible = true;
+
+func take_damage(damage):
+	health -= damage;
+	if (health <= 0):
+		health = 0;
+		queue_free();
+
+
+func _on_Hitbox_area_entered(area):
+	if (area.has_method("get_damage")):
+		take_damage(area.damage);	
+	pass 
