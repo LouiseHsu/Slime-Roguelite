@@ -1,10 +1,9 @@
 extends Node
 
 onready var grass = $Grass
-var _tileset
+onready var sky = $Sky
 
 func _ready():
-	_tileset = grass.get_tileset()
 	set_process_input(true)
 	
 	var map = load("res://Maps/map.png")
@@ -14,6 +13,7 @@ func _ready():
 	for x in range(data.get_width()):
 		for y in range(data.get_height()):
 			var pixel = data.get_pixel(x ,y)
+			sky.set_cellv(Vector2(x, y), 0)
 
 			set_pixel_type(pixel, x, y)
 		
@@ -35,5 +35,8 @@ func set_pixel_type(pixel, x, y):
 	# green - set player pos
 	elif (pixel[0] == 0 && pixel[1] == 1 && pixel[2] == 0):
 		grass.set_cellv(Vector2(x, y), 0)
+#
+#	elif (pixel[0] ==1 && pixel[1] == 1 && pixel[2] == 1):
+#		sky.set_cellv(Vector2(x, y), 0)
 		
 		get_parent().get_node("Entity_Order/Player").global_position = grass.map_to_world(Vector2(x, y));

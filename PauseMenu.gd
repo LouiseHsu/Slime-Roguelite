@@ -20,6 +20,10 @@ func _process(delta):
 			control.visible = true;
 			get_tree().paused = true;
 			canvas.layer = 1;
+		else:
+			control.visible = false;
+			get_tree().paused = false;
+			canvas.layer = -1;
 	pass # Replace with function body.
 
 
