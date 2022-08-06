@@ -10,6 +10,8 @@ var height = 0;
 var num_enemy_types = 0;
 var enemy_type = 0;
 var health = 100;
+var doppelganger;
+var curr_difficulty = 0;
 
 var centre = Vector2.ZERO;
 var type;
@@ -21,27 +23,37 @@ func _ready():
 	width = Constants.VIEWPORT_WIDTH/2;
 	height = Constants.VIEWPORT_HEIGHT/2
 	
+#	Set enemy type for this spawner + set enemy and sprite
 	get_random_enemy();
-	
-	
 	var enemy = load("res://Enemies/" + enemy_type + ".tscn");
 	sprite.texture = load("res://Objects/" + enemy_type + "-spawner.png")
 	
+#	add the mother monster from which we clone slimes, save reference
 	enemy = enemy.instance();
-	
 	enemy_list.add_child(enemy);
-	
+	doppelganger = enemy_list.get_child(0)
+
+#	set random period between slime spawning + start timer
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var num = rng.randf_range(3, 6);
 	
-	timer.wait_time =  num
+	timer.wait_time = num
 	timer.start()
+
+func _process(delta):
+	
+	# set scaling difficulty
+	if (OS.get_ticks_msec()/1000 > (curr_difficulty * 5)):
+		curr_difficulty += 1;
+		doppelganger.init(doppelganger.stats.health * 1.1, doppelganger.stats.damage * 1.1);
+
 
 func _on_Timer_timeout():
 	var enemy = enemy_list.get_child(0).duplicate();
-	enable_enemy(enemy);
 	
+	enable_enemy(enemy);
+
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
@@ -51,9 +63,11 @@ func _on_Timer_timeout():
 	var y = sin(angle) * 30;
 	
 	enemy.global_position = self.global_position + Vector2(x, y);
-
 	get_parent().add_child(enemy);
-
+	
+	print(doppelganger.stats.health)
+	enemy.init(doppelganger.stats.health, doppelganger.stats.damage)
+	
 func get_random_enemy():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

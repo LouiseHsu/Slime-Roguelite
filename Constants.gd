@@ -20,3 +20,20 @@ const WEAPONS_LIST = [WEAPON_1_NAME, WEAPON_2_NAME, WEAPON_3_NAME]
 func delete_children(node):
 	for n in node.get_children():
 		n.queue_free()
+
+func deep_clone(source :Object) :
+	var clone = source.duplicate()
+	# copy all property values
+	for property in source.get_property_list():
+		var property_name = property["name"]
+		clone.set(property_name, source.get(property_name))
+	
+	if source is Node:
+		# remove incomplete duplicated childs
+		for child in clone.get_children():
+			clone.remove_child(child)
+			child.free()
+		assert(clone.get_child_count() == 0)
+		# clone childs
+		for child in source.get_children():
+			clone.add_child(deep_clone(child))

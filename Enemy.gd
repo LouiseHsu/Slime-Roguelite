@@ -17,8 +17,11 @@ func _ready():
 	
 	
 	animation.play("Neutral")
-	stats.init(10, 3);
+	init(10, 3)
 	hurtbox.damage = stats.damage;
+	
+func init(damage, health):
+	stats.init(damage, health);
 
 func _physics_process(delta):
 	move_and_slide(ai.get_next_direction() * VELOCITY)
