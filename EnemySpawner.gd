@@ -46,27 +46,27 @@ func _process(delta):
 	# set scaling difficulty
 	if (OS.get_ticks_msec()/1000 > (curr_difficulty * 5)):
 		curr_difficulty += 1;
-		doppelganger.init(doppelganger.stats.health * 1.1, doppelganger.stats.damage * 1.1);
+		doppelganger.update_stats(int(doppelganger.stats.health * 1.1), int(doppelganger.stats.damage * 1.1));
 
 
 func _on_Timer_timeout():
+	# get a copy of the enemy
 	var enemy = enemy_list.get_child(0).duplicate();
 	
 	enable_enemy(enemy);
 
+	# get spawn point
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	
 	var angle = rng.randf_range(0, 1) * PI * 2;
-
+	
 	var x = cos(angle) * 30;
 	var y = sin(angle) * 30;
-	
 	enemy.global_position = self.global_position + Vector2(x, y);
-	get_parent().add_child(enemy);
 	
+	get_parent().add_child(enemy);	
 	print(doppelganger.stats.health)
-	enemy.init(doppelganger.stats.health, doppelganger.stats.damage)
+	enemy.update_stats(doppelganger.stats.health, doppelganger.stats.damage)
 	
 func get_random_enemy():
 	var rng = RandomNumberGenerator.new()
@@ -95,8 +95,6 @@ func take_damage(damage):
 		health = 0;
 		queue_free();
 
-
 func _on_Hitbox_area_entered(area):
 	if (area.has_method("get_damage")):
-		take_damage(area.damage);	
-	pass 
+		take_damage(area.damage);

@@ -15,13 +15,15 @@ func _ready():
 	self.connect('drop_exp', get_parent().get_node("Player"), "killed_enemy");
 	self.connect('drop_score', get_parent().get_parent().get_node("ScoreUI"), "update_score");
 	
-	
 	animation.play("Neutral")
-	init(10, 3)
+	init()
 	hurtbox.damage = stats.damage;
 	
-func init(damage, health):
-	stats.init(damage, health);
+func init():
+	stats.init(stats.max_health, stats.damage);
+	
+func update_stats(health, damage):
+	stats.init(health, damage);
 
 func _physics_process(delta):
 	move_and_slide(ai.get_next_direction() * VELOCITY)
