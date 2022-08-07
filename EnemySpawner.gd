@@ -65,8 +65,8 @@ func _on_Timer_timeout():
 	enemy.global_position = self.global_position + Vector2(x, y);
 	
 	get_parent().add_child(enemy);	
-	print(doppelganger.stats.health)
 	enemy.update_stats(doppelganger.stats.health, doppelganger.stats.damage)
+	print(doppelganger.stats.health)
 	
 func get_random_enemy():
 	var rng = RandomNumberGenerator.new()

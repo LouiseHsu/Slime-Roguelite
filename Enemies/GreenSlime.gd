@@ -2,17 +2,13 @@ extends "res://Enemy.gd"
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var damage = 5;
+var health = 20;
+var experience = 10;
+var score = 3;
 
 
 # Called when the node enters the scene tree for the first time.
 func init():
-	stats.init(20, 5);
+	stats.init(damage, health, score);
 	pass # Replace with function body.
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
