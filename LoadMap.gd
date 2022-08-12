@@ -6,18 +6,7 @@ onready var sky = $Sky
 func _ready():
 	set_process_input(true)
 	
-	var map = load("res://Maps/map.png")
-	var data = map.get_data()
-	data.lock()
-	
-	for x in range(data.get_width()):
-		for y in range(data.get_height()):
-			var pixel = data.get_pixel(x ,y)
-			sky.set_cellv(Vector2(x, y), 0)
-
-			set_pixel_type(pixel, x, y)
-		
-	grass.update_bitmask_region()
+	load_next_map("map");
 	
 func set_pixel_type(pixel, x, y):
 	# black - normal land
@@ -40,3 +29,20 @@ func set_pixel_type(pixel, x, y):
 #		sky.set_cellv(Vector2(x, y), 0)
 		
 		get_parent().get_node("Entity_Order/Player").global_position = grass.map_to_world(Vector2(x, y));
+
+func load_next_map(map_name):
+	set_process_input(true)
+	
+	var map = load("res://Maps/" + map_name + ".png")
+	var data = map.get_data()
+	data.lock()
+	
+	for x in range(data.get_width()):
+		for y in range(data.get_height()):
+			var pixel = data.get_pixel(x ,y)
+			sky.set_cellv(Vector2(x, y), 0)
+
+			set_pixel_type(pixel, x, y)
+		
+	grass.update_bitmask_region()
+	
