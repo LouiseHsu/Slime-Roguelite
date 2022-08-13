@@ -2,11 +2,12 @@ extends Node
 
 onready var grass = $Grass
 onready var sky = $Sky
+var curr_map_num = -1;
 
 func _ready():
 	set_process_input(true)
 	
-	load_next_map("map");
+	load_next_map();
 	
 func set_pixel_type(pixel, x, y):
 	# black - normal land
@@ -30,10 +31,10 @@ func set_pixel_type(pixel, x, y):
 		
 		get_parent().get_node("Entity_Order/Player").global_position = grass.map_to_world(Vector2(x, y));
 
-func load_next_map(map_name):
+func load_next_map():
 	set_process_input(true)
-	
-	var map = load("res://Maps/" + map_name + ".png")
+	curr_map_num += 1;
+	var map = load("res://Maps/map" + str(curr_map_num) + ".png")
 	var data = map.get_data()
 	data.lock()
 	
