@@ -5,6 +5,8 @@ onready var timer = $Timer;
 onready var sprite = $Sprite
 onready var stats = $Stats;
 
+signal spawner_destroyed;
+
 var width = 0;
 var height = 0;
 var num_enemy_types = 0;
@@ -93,6 +95,7 @@ func take_damage(damage):
 	health -= damage;
 	if (health <= 0):
 		health = 0;
+		emit_signal("spawner_destroyed");
 		queue_free();
 
 func _on_Hitbox_area_entered(area):

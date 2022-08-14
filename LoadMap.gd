@@ -2,7 +2,11 @@ extends Node
 
 onready var grass = $Grass
 onready var sky = $Sky
+
 var curr_map_num = -1;
+var num_spawner = 0;
+
+signal next_level;
 
 func _ready():
 	set_process_input(true)
@@ -19,7 +23,11 @@ func set_pixel_type(pixel, x, y):
 		grass.set_cellv(Vector2(x, y), 0)
 		
 		var spawner = load("res://EnemySpawner.tscn").instance();
+		
 		spawner.init(grass.map_to_world(Vector2(x, y)));
+		spawner.connect("spawner_destroyed", self, "decrease_spawner_count")
+		increase_spawner_count()
+		
 		get_parent().get_node("Entity_Order").call_deferred("add_child", spawner)
 		
 	# green - set player pos
@@ -46,4 +54,15 @@ func load_next_map():
 			set_pixel_type(pixel, x, y)
 		
 	grass.update_bitmask_region()
+	
+func decrease_spawner_count():
+	num_spawner-= 1;
+	print("hewwo")
+	if (num_spawner == 0):
+		emit_signal("next_level")
+		print("next")
+		
+	
+func increase_spawner_count():
+	num_spawner+= 1;
 	
