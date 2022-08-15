@@ -41,7 +41,13 @@ func set_pixel_type(pixel, x, y):
 
 func load_next_map():
 	set_process_input(true)
-	curr_map_num += 1;
+	curr_map_num = curr_map_num + 1;
+	print("curr_map_num " + str(curr_map_num))
+	var fileChecker = File.new()
+	var doFileExists = fileChecker.file_exists("res://Maps/map" + str(curr_map_num) + ".png");
+	
+	if (!doFileExists):
+		get_tree().change_scene("res://EndScreen.tscn")
 	var map = load("res://Maps/map" + str(curr_map_num) + ".png")
 	var data = map.get_data()
 	data.lock()
