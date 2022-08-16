@@ -36,6 +36,10 @@ func _ready():
 	# should i make a seperate player stats that reads from a json?
 	emit_signal("player_ready");
 
+func init_at(position):
+	PlayerStats.health = PlayerStats.max_health;
+	self.global_position = position;
+
 func _physics_process(delta):
 	handle_input();
 	handle_movement();

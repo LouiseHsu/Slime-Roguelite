@@ -37,7 +37,7 @@ func set_pixel_type(pixel, x, y):
 #	elif (pixel[0] ==1 && pixel[1] == 1 && pixel[2] == 1):
 #		sky.set_cellv(Vector2(x, y), 0)
 		
-		get_parent().get_node("Entity_Order/Player").global_position = grass.map_to_world(Vector2(x, y));
+		get_parent().get_node("Entity_Order/Player").init_at(grass.map_to_world(Vector2(x, y)));
 
 func load_next_map():
 	set_process_input(true)
@@ -45,9 +45,13 @@ func load_next_map():
 	print("curr_map_num " + str(curr_map_num))
 	var fileChecker = File.new()
 	var doFileExists = fileChecker.file_exists("res://Maps/map" + str(curr_map_num) + ".png");
+	print(doFileExists)
 	
 	if (!doFileExists):
+		print("file doesnt exist")
 		get_tree().change_scene("res://EndScreen.tscn")
+		return;
+		
 	var map = load("res://Maps/map" + str(curr_map_num) + ".png")
 	var data = map.get_data()
 	data.lock()

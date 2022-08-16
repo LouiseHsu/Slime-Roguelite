@@ -18,6 +18,7 @@ var weapon_list = {
 
 func _ready():
 	add_weapon("front_weapon");
+	print("added first weapon")
 
 func add_weapon(chosen_weapon):
 	if (weapon_list[chosen_weapon]):
