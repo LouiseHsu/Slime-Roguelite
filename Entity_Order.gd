@@ -10,6 +10,12 @@ extends YSort
 func _ready():
 	pass # Replace with function body.
 
+# Clear all entities except player
+func clear_all():
+	for child in self.get_children():
+		if (child.name != "Player"):
+			child.queue_free();
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

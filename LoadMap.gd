@@ -38,17 +38,15 @@ func set_pixel_type(pixel, x, y):
 #		sky.set_cellv(Vector2(x, y), 0)	
 		get_parent().get_node("Entity_Order/Player").init_at(grass.map_to_world(Vector2(x, y)));
 
-	else:
-	else:
-		print("not a recognized color")
+
+
 		
 func load_next_map():
 	set_process_input(true)
 	curr_map_num = curr_map_num + 1;
-	print("curr_map_num " + str(curr_map_num))
+
 	var fileChecker = File.new()
 	var doFileExists = fileChecker.file_exists("res://Maps/map" + str(curr_map_num) + ".png");
-	print(doFileExists)
 	
 	if (!doFileExists):
 		print("file doesnt exist")
