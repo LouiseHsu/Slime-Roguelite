@@ -37,7 +37,7 @@ func _ready():
 	emit_signal("player_ready");
 
 func init_at(position):
-	PlayerStats.health = PlayerStats.max_health;
+	PlayerStats.reset_health();
 	self.global_position = position;
 
 func _physics_process(delta):
@@ -110,7 +110,6 @@ func take_damage():
 			var health = 0;
 			for body in bodies_in_collision:
 				health = PlayerStats.take_damage(bodies_in_collision[0].get_damage());
-				emit_signal("damage_taken");
 				if (health == 0) :
 					on_death();
 				else :

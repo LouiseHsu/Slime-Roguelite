@@ -3,6 +3,7 @@ extends Node
 signal death;
 signal update_exp_bar(curr, next);
 signal update_score(points);
+signal update_health_bar;
 signal level_up;
 signal weapons_update;
 
@@ -38,7 +39,12 @@ func take_damage(damage):
 	health -= damage;
 	if (health <= 0):
 		health = 0;
+	emit_signal("update_health_bar");
 	return health;
+	
+func reset_health():
+	health = max_health;
+	emit_signal("update_health_bar");
 
 func gain_exp(experience):
 	curr_exp += experience;
