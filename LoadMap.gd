@@ -35,10 +35,13 @@ func set_pixel_type(pixel, x, y):
 		grass.set_cellv(Vector2(x, y), 0)
 #
 #	elif (pixel[0] ==1 && pixel[1] == 1 && pixel[2] == 1):
-#		sky.set_cellv(Vector2(x, y), 0)
-		
+#		sky.set_cellv(Vector2(x, y), 0)	
 		get_parent().get_node("Entity_Order/Player").init_at(grass.map_to_world(Vector2(x, y)));
 
+	else:
+	else:
+		print("not a recognized color")
+		
 func load_next_map():
 	set_process_input(true)
 	curr_map_num = curr_map_num + 1;
@@ -60,7 +63,6 @@ func load_next_map():
 		for y in range(data.get_height()):
 			var pixel = data.get_pixel(x ,y)
 			sky.set_cellv(Vector2(x, y), 0)
-
 			set_pixel_type(pixel, x, y)
 		
 	grass.update_bitmask_region()

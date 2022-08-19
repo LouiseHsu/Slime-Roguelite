@@ -33,7 +33,6 @@ const Direction = [
 const top_speed = 50;
 
 func _ready():
-	# should i make a seperate player stats that reads from a json?
 	emit_signal("player_ready");
 
 func init_at(position):

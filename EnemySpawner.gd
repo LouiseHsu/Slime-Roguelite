@@ -32,6 +32,7 @@ func _ready():
 	
 #	add the mother monster from which we clone slimes, save reference
 	enemy = enemy.instance();
+	disable_enemy(enemy);
 	enemy_list.add_child(enemy);
 	doppelganger = enemy_list.get_child(0)
 
@@ -49,7 +50,6 @@ func _process(delta):
 	if (OS.get_ticks_msec()/1000 > (curr_difficulty * 5)):
 		curr_difficulty += 1;
 		doppelganger.update_stats(int(doppelganger.stats.health * 1.1), int(doppelganger.stats.damage * 1.1));
-
 
 func _on_Timer_timeout():
 	# get a copy of the enemy
