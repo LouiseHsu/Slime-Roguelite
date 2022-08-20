@@ -38,9 +38,10 @@ func _ready():
 func init_at(position):
 	PlayerStats.reset_health();
 	self.global_position = position;
+	State.direction = DOWN
+	
 
 func _physics_process(delta):
-	handle_input();
 	handle_movement();
 	handle_animation();
 	activate_weapons();
@@ -49,10 +50,6 @@ func _physics_process(delta):
 func activate_weapons():
 	for w in weapons.get_children():
 		w.activate(Direction[State.direction]);
-
-func handle_input():
-	if Input.is_action_just_released("Restart") :
-		get_tree().reload_current_scene();
 	
 func handle_movement():
 	var temp_velocity = Vector2(0, 0);

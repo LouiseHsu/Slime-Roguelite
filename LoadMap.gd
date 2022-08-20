@@ -39,7 +39,18 @@ func set_pixel_type(pixel, x, y):
 		get_parent().get_node("Entity_Order/Player").init_at(grass.map_to_world(Vector2(x, y)));
 
 
-
+func reload_map():
+	var map = load("res://Maps/map" + str(curr_map_num) + ".png")
+	var data = map.get_data()
+	data.lock()
+	
+	for x in range(data.get_width()):
+		for y in range(data.get_height()):
+			var pixel = data.get_pixel(x ,y)
+			sky.set_cellv(Vector2(x, y), 0)
+			set_pixel_type(pixel, x, y)
+		
+	grass.update_bitmask_region()
 		
 func load_next_map():
 	set_process_input(true)
