@@ -4,6 +4,8 @@ onready var animationPlayer = $AnimationPlayer;
 onready var effects = $Effects;
 onready var weapons = $Weapons;
 onready var invincibility_timer = $Invincibility;
+onready var blink_timer = $Blink;
+onready var sprite = $YSort/FoxSpritesheet;
 
 signal damage_taken;
 signal player_ready;
@@ -34,11 +36,13 @@ const Direction = [
 
 enum Status {
 	NORMAL,
-	INVINCIBLE
+	INVINCIBLE,
+	BLINKING
 }
 
 
-const top_speed = 50;
+const top_speed = 75;
+const blink_speed = 150;
 
 func _ready():
 	emit_signal("player_ready");
@@ -56,6 +60,7 @@ func _physics_process(delta):
 	handle_state();
 	
 func handle_state():
+	print(blink_timer.time_left );
 	match (State.status):
 		Status.NORMAL:
 			pass;
@@ -64,6 +69,13 @@ func handle_state():
 				State.status = Status.NORMAL;
 				effects.stop(true)
 				pass;
+		Status.BLINKING:
+			if (blink_timer.time_left <= 0):
+				State.status = Status.NORMAL;
+				sprite.visible = true;
+				print("sdsdsdsdsdhi")
+				pass;
+			pass;
 	pass;
 	
 func activate_weapons():
@@ -72,18 +84,26 @@ func activate_weapons():
 	
 func handle_movement():
 	var temp_velocity = Vector2(0, 0);
-	if Input.is_action_pressed("Down") :
-		temp_velocity = top_speed * Direction[DOWN];
-		State.direction = DOWN;
-	if Input.is_action_pressed("Up") :
-		temp_velocity = top_speed * Direction[UP];
-		State.direction = UP;
-	if Input.is_action_pressed("Left") :
-		temp_velocity = top_speed * Direction[LEFT];
-		State.direction = LEFT;
-	if Input.is_action_pressed("Right") :
-		temp_velocity = top_speed * Direction[RIGHT];
-		State.direction = RIGHT;
+	
+	if State.status != Status.BLINKING:
+		if Input.is_action_pressed("Down") :
+			temp_velocity = top_speed * Direction[DOWN];
+			State.direction = DOWN;
+		elif Input.is_action_pressed("Up") :
+			temp_velocity = top_speed * Direction[UP];
+			State.direction = UP;
+		elif Input.is_action_pressed("Left") :
+			temp_velocity = top_speed * Direction[LEFT];
+			State.direction = LEFT;
+		elif Input.is_action_pressed("Right") :
+			temp_velocity = top_speed * Direction[RIGHT];
+			State.direction = RIGHT;
+			
+		if Input.is_action_just_pressed("Blink") :
+			set_blinking();
+			temp_velocity = blink_speed * Direction[State.direction];
+	else:
+		State.velocity = move_and_slide(blink_speed * Direction[State.direction]);
 	
 	State.velocity = move_and_slide(temp_velocity);
 
@@ -134,7 +154,14 @@ func set_invincibility():
 	invincibility_timer.start();
 	effects.play("Invincibility");
 	State.status = Status.INVINCIBLE;
-		
+	
+func set_blinking():
+	State.status = Status.BLINKING;
+	sprite.visible = false;
+	blink_timer.start();
+	
+	get_node("Particles2D").emitting = true;
+	
 func killed_enemy(experience):
 	PlayerStats.gain_exp(experience);
 
