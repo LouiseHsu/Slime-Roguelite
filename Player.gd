@@ -62,7 +62,7 @@ func handle_state():
 		Status.INVINCIBLE:
 			if (invincibility_timer.time_left <= 0):
 				State.status = Status.NORMAL;
-				effects.stop()
+				effects.stop(true)
 				pass;
 	pass;
 	
