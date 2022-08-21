@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer;
+onready var effects = $Effects;
 onready var weapons = $Weapons;
 onready var invincibility_timer = $Invincibility;
 
@@ -10,7 +11,8 @@ signal level_up;
 
 var State = {
 	direction = DOWN,
-	velocity = Vector2(0, 0)
+	velocity = Vector2(0, 0),
+	status = Status.NORMAL
 }
 
 var bodies_in_collision = [];
@@ -30,6 +32,12 @@ const Direction = [
 	Vector2(1, 0)
 ];
 
+enum Status {
+	NORMAL,
+	INVINCIBLE
+}
+
+
 const top_speed = 50;
 
 func _ready():
@@ -39,13 +47,24 @@ func init_at(position):
 	PlayerStats.reset_health();
 	self.global_position = position;
 	State.direction = DOWN
-	
 
 func _physics_process(delta):
 	handle_movement();
 	handle_animation();
 	activate_weapons();
 	take_damage();
+	handle_state();
+	
+func handle_state():
+	match (State.status):
+		Status.NORMAL:
+			pass;
+		Status.INVINCIBLE:
+			if (invincibility_timer.time_left <= 0):
+				State.status = Status.NORMAL;
+				effects.stop()
+				pass;
+	pass;
 	
 func activate_weapons():
 	for w in weapons.get_children():
@@ -100,7 +119,7 @@ func _on_Hitbox_area_exited(area):
 		
 func take_damage():
 	if (bodies_in_collision.size() > 0):
-		if (invincibility_timer.time_left > 0):
+		if (State.status == Status.INVINCIBLE):
 			return;
 		else: 
 			var health = 0;
@@ -109,8 +128,12 @@ func take_damage():
 				if (health == 0) :
 					on_death();
 				else :
-					invincibility_timer.start();
+					set_invincibility()
 			
+func set_invincibility():
+	invincibility_timer.start();
+	effects.play("Invincibility");
+	State.status = Status.INVINCIBLE;
 		
 func killed_enemy(experience):
 	PlayerStats.gain_exp(experience);
