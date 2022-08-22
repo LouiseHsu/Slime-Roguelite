@@ -230,7 +230,7 @@ anims/Standing-Left = SubResource( 10 )
 anims/Standing-Right = SubResource( 11 )
 anims/Standing-Up = SubResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 6 )
 rotation = 1.5708
 shape = SubResource( 2 )
@@ -253,6 +253,7 @@ texture = ExtResource( 4 )
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 0, 1 )
 collision_mask = 0
+monitoring = false
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -309,7 +310,7 @@ script = ExtResource( 11 )
 [node name="Particles2D" type="Particles2D" parent="."]
 show_behind_parent = true
 emitting = false
-amount = 7
+amount = 10
 lifetime = 0.5
 one_shot = true
 randomness = 0.24

@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer;
+onready var collision = $Collision
+onready var hitbox = $Hitbox
 onready var effects = $Effects;
 onready var weapons = $Weapons;
 onready var invincibility_timer = $Invincibility;
@@ -51,6 +53,7 @@ func init_at(position):
 	PlayerStats.reset_health();
 	self.global_position = position;
 	State.direction = DOWN
+	State.status = Status.NORMAL;
 
 func _physics_process(delta):
 	handle_movement();
@@ -66,14 +69,11 @@ func handle_state():
 			pass;
 		Status.INVINCIBLE:
 			if (invincibility_timer.time_left <= 0):
-				State.status = Status.NORMAL;
-				effects.stop(true)
+				remove_invincibility();
 				pass;
 		Status.BLINKING:
 			if (blink_timer.time_left <= 0):
-				State.status = Status.NORMAL;
-				sprite.visible = true;
-				print("sdsdsdsdsdhi")
+				remove_blinking();
 				pass;
 			pass;
 	pass;
@@ -155,12 +155,23 @@ func set_invincibility():
 	effects.play("Invincibility");
 	State.status = Status.INVINCIBLE;
 	
+func remove_invincibility():
+	State.status = Status.NORMAL;
+	effects.stop(true)
+	
 func set_blinking():
 	State.status = Status.BLINKING;
 	sprite.visible = false;
 	blink_timer.start();
-	
+	collision.disabled = true;
+	hitbox.monitoring = false;
 	get_node("Particles2D").emitting = true;
+	
+func remove_blinking():
+	State.status = Status.NORMAL;
+	sprite.visible = true;
+	collision.disabled = false;
+	hitbox.monitoring = true;
 	
 func killed_enemy(experience):
 	PlayerStats.gain_exp(experience);
