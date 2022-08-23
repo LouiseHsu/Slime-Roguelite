@@ -29,7 +29,7 @@ script = ExtResource( 17 )
 [node name="Player" parent="Entity_Order" groups=["Player"] instance=ExtResource( 3 )]
 position = Vector2( 156, 86 )
 
-[node name="PlayerUI" parent="Entity_Order/Player" index="5"]
+[node name="PlayerUI" parent="Entity_Order/Player" index="6"]
 margin_bottom = 7.0
 
 [node name="MapGenerator" type="Node" parent="."]

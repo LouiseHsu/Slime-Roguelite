@@ -66,6 +66,7 @@ func handle_state():
 	print(blink_timer.time_left );
 	match (State.status):
 		Status.NORMAL:
+			set_normal();
 			pass;
 		Status.INVINCIBLE:
 			if (invincibility_timer.time_left <= 0):
@@ -169,6 +170,12 @@ func set_blinking():
 	
 func remove_blinking():
 	State.status = Status.NORMAL;
+	sprite.visible = true;
+	collision.disabled = false;
+	hitbox.monitoring = true;
+	
+func set_normal():
+	effects.stop(true)
 	sprite.visible = true;
 	collision.disabled = false;
 	hitbox.monitoring = true;
