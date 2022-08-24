@@ -8,6 +8,7 @@ onready var weapons = $Weapons;
 onready var invincibility_timer = $Invincibility;
 onready var blink_timer = $Blink;
 onready var sprite = $YSort/FoxSpritesheet;
+onready var floating_text = $FloatingTextManager
 
 signal damage_taken;
 signal player_ready;
@@ -146,6 +147,8 @@ func take_damage():
 			var health = 0;
 			for body in bodies_in_collision:
 				health = PlayerStats.take_damage(bodies_in_collision[0].get_damage());
+				$FloatingTextManager.show_value("Hit", true)
+
 				if (health == 0) :
 					on_death();
 				else :
