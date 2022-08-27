@@ -7,7 +7,7 @@ signal update_health_bar;
 signal level_up;
 signal weapons_update;
 
-var max_health = 30;
+var max_health = 40;
 var damage = 10;
 var level = 1;
 var next_level_exp = 100;

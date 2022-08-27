@@ -147,7 +147,7 @@ func take_damage():
 			var health = 0;
 			for body in bodies_in_collision:
 				health = PlayerStats.take_damage(bodies_in_collision[0].get_damage());
-				$FloatingTextManager.show_value("Hit", true)
+				$FloatingTextManager.show_value(bodies_in_collision[0].get_damage(), false)
 
 				if (health == 0) :
 					on_death();

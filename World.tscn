@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Tilesets/Grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://LoadMap.gd" type="Script" id=2]
@@ -19,6 +19,13 @@
 [ext_resource path="res://Entity_Order.gd" type="Script" id=17]
 [ext_resource path="res://Player_Stats.gd" type="Script" id=18]
 [ext_resource path="res://Weapon_Display.gd" type="Script" id=19]
+[ext_resource path="res://Fonts/Essential.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://Tooltip.gd" type="Script" id=21]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 20 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -74,6 +81,20 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 2
+
+[node name="Control" type="Control" parent="Weapon_Display"]
+margin_left = 3.0
+margin_top = 162.0
+margin_right = 43.0
+margin_bottom = 183.0
+script = ExtResource( 21 )
+
+[node name="ToolTipLabel" type="Label" parent="Weapon_Display/Control"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Test"
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -215,6 +236,8 @@ script = ExtResource( 15 )
 
 [connection signal="damage_taken" from="Entity_Order/Player" to="." method="_on_Player_damage_taken"]
 [connection signal="next_level" from="MapGenerator" to="." method="_on_MapGenerator_next_level"]
+[connection signal="mouse_entered" from="Weapon_Display/Control" to="Weapon_Display/Control" method="_on_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Weapon_Display/Control" to="Weapon_Display/Control" method="_on_Control_mouse_exited"]
 [connection signal="chose_weapon" from="LevelUpMenu" to="Entity_Order/Player" method="_on_LevelUpMenu_chose_weapon"]
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 1" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_1_upgrade"]
 [connection signal="upgrade" from="LevelUpMenu/MarginContainer/Background/VBoxContainer/OptionContainer/Option 2" to="LevelUpMenu/MarginContainer/Background/VBoxContainer/HBoxContainer2/ConfirmButton" method="_on_Option_2_upgrade"]
