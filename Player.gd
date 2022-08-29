@@ -51,6 +51,7 @@ func _ready():
 	emit_signal("player_ready");
 
 func init_at(position):
+	remove_all_status();
 	PlayerStats.reset_health();
 	self.global_position = position;
 	State.direction = DOWN
@@ -102,6 +103,7 @@ func handle_movement():
 			State.direction = RIGHT;
 			
 		if Input.is_action_just_pressed("Blink") :
+			remove_all_status();
 			set_blinking();
 			temp_velocity = blink_speed * Direction[State.direction];
 	else:
@@ -161,7 +163,12 @@ func set_invincibility():
 	
 func remove_invincibility():
 	State.status = Status.NORMAL;
+
+	print("remove in")
 	effects.stop(true)
+	effects.seek(0)
+	effects.play("Default")
+
 	
 func set_blinking():
 	State.status = Status.BLINKING;
@@ -177,8 +184,11 @@ func remove_blinking():
 	collision.disabled = false;
 	hitbox.monitoring = true;
 	
+func remove_all_status():
+	remove_invincibility();
+	remove_blinking();
+	
 func set_normal():
-	effects.stop(true)
 	sprite.visible = true;
 	collision.disabled = false;
 	hitbox.monitoring = true;

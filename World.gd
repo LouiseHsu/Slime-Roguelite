@@ -2,6 +2,7 @@ extends Node2D
 
 onready var map_generator = $MapGenerator;
 onready var entity_order = $Entity_Order;
+onready var player = $Entity_Order/Player;
 
 func ready():
 	map_generator.connect("next_level", self, "load_next_level")
@@ -22,3 +23,5 @@ func handle_input():
 	if Input.is_action_just_released("Restart") :
 		map_generator.reload_map();
 		entity_order.clear_all();
+		
+		
