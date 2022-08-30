@@ -9,11 +9,15 @@ onready var ai = $AI;
 onready var stats = $Stats;
 onready var hurtbox = $Hurtbox;
 onready var animation = $AnimationPlayer;
+var ftm;
 
 func _ready():
 	stats.connect("death", self, "on_death");
 	self.connect('drop_exp', get_parent().get_node("Player"), "killed_enemy");
 	self.connect('drop_score', get_parent().get_parent().get_node("ScoreUI"), "update_score");
+	
+	ftm = load("res://FloatingTextManager.tscn");
+	add_child(ftm.instance())
 	
 	animation.play("Neutral")
 	
@@ -37,5 +41,4 @@ func on_death():
 func _on_Hitbox_area_entered(area):
 	if (area.has_method("get_damage")):
 		stats.take_damage(area.damage);
-		
-	pass 
+		ftm.show_value(area.damage, false)

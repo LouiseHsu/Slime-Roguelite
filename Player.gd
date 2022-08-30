@@ -164,7 +164,6 @@ func set_invincibility():
 func remove_invincibility():
 	State.status = Status.NORMAL;
 
-	print("remove in")
 	effects.stop(true)
 	effects.seek(0)
 	effects.play("Default")
@@ -198,6 +197,7 @@ func killed_enemy(experience):
 
 func on_death():
 	queue_free();
+#	add save fcn here?
 	get_tree().reload_current_scene();
 	
 func _on_LevelUpMenu_chose_weapon(chosen_weapon):
