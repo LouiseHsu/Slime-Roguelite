@@ -17,7 +17,8 @@ func _ready():
 	self.connect('drop_score', get_parent().get_parent().get_node("ScoreUI"), "update_score");
 	
 	ftm = load("res://FloatingTextManager.tscn");
-	add_child(ftm.instance())
+	ftm = ftm.instance();
+	add_child(ftm)
 	
 	animation.play("Neutral")
 	
@@ -40,5 +41,6 @@ func on_death():
 
 func _on_Hitbox_area_entered(area):
 	if (area.has_method("get_damage")):
-		stats.take_damage(area.damage);
 		ftm.show_value(area.damage, false)
+		stats.take_damage(area.damage);
+		
