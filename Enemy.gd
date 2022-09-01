@@ -41,6 +41,7 @@ func on_death():
 
 func _on_Hitbox_area_entered(area):
 	if (area.has_method("get_damage")):
-		ftm.show_value(area.damage, false)
-		stats.take_damage(area.damage);
+		if (area.damage != 0):
+			ftm.show_value(area.damage, false);
+			stats.take_damage(area.damage);
 		
