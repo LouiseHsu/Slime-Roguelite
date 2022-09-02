@@ -9,6 +9,8 @@ onready var ai = $AI;
 onready var stats = $Stats;
 onready var hurtbox = $Hurtbox;
 onready var animation = $AnimationPlayer;
+onready var hurtbox_collision = $Hurtbox/Collision
+onready var hitbox_collision = $Hitbox/Collision
 var ftm;
 
 func _ready():
@@ -37,6 +39,8 @@ func _physics_process(delta):
 func on_death():
 	emit_signal("drop_exp", stats.dropped_exp);
 	emit_signal("drop_score", stats.dropped_score);
+	print("here")
+	disable()
 	
 	ftm.delete();
 
@@ -48,3 +52,8 @@ func _on_Hitbox_area_entered(area):
 			print(area.damage)
 			stats.take_damage(area.damage);
 		
+func disable():
+	self.remove_child(self.get_node("Hitbox"));
+	self.remove_child(self.get_node("Hurtbox"));
+	self.remove_child(self.get_node("PhysicalHitbox"));
+	self.get_node("Sprite").modulate.a = 0;

@@ -80,13 +80,13 @@ func _on_Camera2D_camera_pos(pos):
 	centre = pos;
 	
 func disable_enemy(enemy):
-	enemy.get_node("Hitbox/CollisionShape2D").disabled = true;
+	enemy.get_node("Hitbox/Collision").disabled = true;
 	enemy.get_node("Hurtbox/Collision").disabled = true;
 	enemy.get_node("PhysicalHitbox").disabled = true;
 	enemy.visible = false;
 	
 func enable_enemy(enemy):
-	enemy.get_node("Hitbox/CollisionShape2D").disabled = false;
+	enemy.get_node("Hitbox/Collision").disabled = false;
 	enemy.get_node("Hurtbox/Collision").disabled = false;
 	enemy.get_node("PhysicalHitbox").disabled = false;
 	enemy.visible = true;

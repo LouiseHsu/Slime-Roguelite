@@ -9,7 +9,6 @@ func _init():
 
 func _on_Player_damage_taken():
 	healthBar.value = PlayerStats.health;
-	print(PlayerStats.health);
 
 func _on_Player_player_ready():
 	healthBar.max_value = PlayerStats.max_health;

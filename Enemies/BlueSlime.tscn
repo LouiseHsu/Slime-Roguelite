@@ -8,7 +8,7 @@
 [ext_resource path="res://Hurtbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hitbox.tscn" type="PackedScene" id=7]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Neutral"
 length = 0.4
 loop = true
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -61,8 +61,8 @@ position = Vector2( 181, -54 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Neutral = SubResource( 4 )
-anims/RESET = SubResource( 5 )
+anims/Neutral = SubResource( 1 )
+anims/RESET = SubResource( 2 )
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -80,3 +80,6 @@ damage = 20
 shape = SubResource( 3 )
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

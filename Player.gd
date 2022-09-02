@@ -65,7 +65,6 @@ func _physics_process(delta):
 	handle_state();
 	
 func handle_state():
-	print(blink_timer.time_left );
 	match (State.status):
 		Status.NORMAL:
 			set_normal();
