@@ -10,3 +10,9 @@ func show_value(value, crit=false):
 	var fct = FCT.instance()
 	add_child(fct)
 	fct.show_value(str(value), travel, duration, spread, crit)
+
+func delete():
+	while self.get_children().size() > 0:
+		if self.get_children().size() == 0:
+			break;
+	get_parent().queue_free();

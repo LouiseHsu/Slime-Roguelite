@@ -37,11 +37,14 @@ func _physics_process(delta):
 func on_death():
 	emit_signal("drop_exp", stats.dropped_exp);
 	emit_signal("drop_score", stats.dropped_score);
-	queue_free();
+	
+	ftm.delete();
+
 
 func _on_Hitbox_area_entered(area):
 	if (area.has_method("get_damage")):
 		if (area.damage != 0):
 			ftm.show_value(area.damage, false);
+			print(area.damage)
 			stats.take_damage(area.damage);
 		
