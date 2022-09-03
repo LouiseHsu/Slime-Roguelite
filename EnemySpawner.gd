@@ -11,7 +11,7 @@ var width = 0;
 var height = 0;
 var num_enemy_types = 0;
 var enemy_type = 0;
-var health = 100;
+var health = 20;
 var doppelganger;
 var curr_difficulty = 0;
 

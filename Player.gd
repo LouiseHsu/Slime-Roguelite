@@ -201,3 +201,12 @@ func on_death():
 	
 func _on_LevelUpMenu_chose_weapon(chosen_weapon):
 	weapons.add_weapon(chosen_weapon);
+	
+func save():
+	var save_dict = {
+		"level" : PlayerStats.level,
+		"curr_exp" : PlayerStats.curr_exp,
+		"owned_weapons" : PlayerStats.owned_weapons
+	}
+	
+	return save_dict;

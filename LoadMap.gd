@@ -10,6 +10,7 @@ signal next_level;
 
 func _ready():
 	set_process_input(true)
+	self.connect('next_level', get_tree().get_root().get_node("World"), "load_next_level");
 	
 	load_next_map();
 	
@@ -82,8 +83,15 @@ func decrease_spawner_count():
 	if (num_spawner == 0):
 		emit_signal("next_level")
 		print("next")
+		print(num_spawner)
 		
 	
 func increase_spawner_count():
 	num_spawner+= 1;
 	
+func save():
+	var save_dict = {
+		"curr_map" : curr_map_num
+	}
+	
+	return save_dict;
