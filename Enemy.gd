@@ -40,7 +40,7 @@ func on_death():
 	emit_signal("drop_exp", stats.dropped_exp);
 	emit_signal("drop_score", stats.dropped_score);
 	
-	disable()
+	call_deferred("disable")
 	ftm.delete();
 
 func _on_Hitbox_area_entered(area):
