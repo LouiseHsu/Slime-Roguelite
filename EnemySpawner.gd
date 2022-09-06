@@ -17,11 +17,16 @@ var curr_difficulty = 0;
 
 var centre = Vector2.ZERO;
 var type;
+var ftm;
 
 func init(position):
 	self.global_position = position;
 	
 func _ready():
+	ftm = load("res://FloatingTextManager.tscn");
+	ftm = ftm.instance();
+	add_child(ftm)
+	
 	width = Constants.VIEWPORT_WIDTH/2;
 	height = Constants.VIEWPORT_HEIGHT/2
 	
@@ -92,11 +97,16 @@ func enable_enemy(enemy):
 	enemy.visible = true;
 
 func take_damage(damage):
+	if (damage == 0):
+		pass;
+
+	ftm.show_value(damage, false);
 	health -= damage;
 	if (health <= 0):
 		health = 0;
 		emit_signal("spawner_destroyed");
 		queue_free();
+		
 
 func _on_Hitbox_area_entered(area):
 	if (area.has_method("get_damage")):

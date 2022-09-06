@@ -1,5 +1,12 @@
 extends Label
 
+enum {
+	NORMAL,
+	CRIT,
+	ENEMY,
+	ENEMY_CRIT
+}
+
 func show_value(value, travel, duration, spread, crit=false):
 	text = value
 	var movement = travel.rotated(rand_range(-spread/2, spread/2))

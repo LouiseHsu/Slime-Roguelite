@@ -20,7 +20,7 @@ func _ready():
 	
 	ftm = load("res://FloatingTextManager.tscn");
 	ftm = ftm.instance();
-	add_child(ftm)
+	
 	
 	animation.play("Neutral")
 	
