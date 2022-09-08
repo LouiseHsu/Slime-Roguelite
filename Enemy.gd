@@ -20,7 +20,7 @@ func _ready():
 	
 	ftm = load("res://FloatingTextManager.tscn");
 	ftm = ftm.instance();
-	
+	add_child(ftm)
 	
 	animation.play("Neutral")
 	
@@ -39,7 +39,7 @@ func _physics_process(delta):
 func on_death():
 	emit_signal("drop_exp", stats.dropped_exp);
 	emit_signal("drop_score", stats.dropped_score);
-	
+	print("here")
 	call_deferred("disable")
 	ftm.delete();
 

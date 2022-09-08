@@ -44,6 +44,7 @@ func reload_map():
 	var map = load("res://Maps/map" + str(curr_map_num) + ".png")
 	var data = map.get_data()
 	data.lock()
+	num_spawner = 0;
 	
 	for x in range(data.get_width()):
 		for y in range(data.get_height()):
