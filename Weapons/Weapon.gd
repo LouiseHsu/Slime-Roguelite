@@ -35,11 +35,17 @@ func level_up():
 	init(self.fire_rate, self.damage);
 
 func _physics_process(delta):
-	spawn_projectiles(delta);
+	physics_process(delta);
 	
+	
+func physics_process(delta):
+	spawn_projectiles(delta);
+
 func spawn_projectiles(delta):
 	if (self.active):
+		
 		if (firing_timer <= 0):
+			print("hi")
 			var projectile = load("res://Projectiles/Projectile.tscn").instance();
 			projectile.init(self.p_velocity, self.damage, sprite_frame);
 			add_child(projectile);
