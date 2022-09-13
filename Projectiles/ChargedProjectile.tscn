@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Projectiles/Projectile.gd" type="Script" id=1]
-[ext_resource path="res://Projectiles/ChargedProjectile.png" type="Texture" id=2]
+[ext_resource path="res://Projectiles/ChargedProjectile2.png" type="Texture" id=2]
 [ext_resource path="res://Hurtbox.gd" type="Script" id=3]
-[ext_resource path="res://Light/light2.png" type="Texture" id=4]
+[ext_resource path="res://Light/light3.jpg" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
@@ -34,9 +34,9 @@ autostart = true
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 4 )
-texture_scale = 0.03
-color = Color( 0.737255, 0.278431, 0.831373, 1 )
-energy = 0.4
+texture_scale = 0.2
+color = Color( 0.823529, 1, 1, 1 )
+energy = 0.5
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
