@@ -10,15 +10,16 @@
 radius = 4.0
 
 [sub_resource type="ParticlesMaterial" id=2]
-lifetime_randomness = 0.44
+lifetime_randomness = 0.32
 emission_shape = 1
-emission_sphere_radius = 8.07
+emission_sphere_radius = 3.88
 flag_disable_z = true
-spread = 21.39
+spread = 0.0
 gravity = Vector3( 0, 10, 0 )
 angular_velocity = -206.56
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale_random = 0.63
 
 [node name="ChargedProjectile" type="KinematicBody2D"]
 collision_layer = 0
