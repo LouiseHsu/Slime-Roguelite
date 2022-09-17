@@ -37,3 +37,9 @@ func deep_clone(source :Object) :
 		# clone childs
 		for child in source.get_children():
 			clone.add_child(deep_clone(child))
+
+# orb types
+const PINK_ORB = "pink_orb"
+const BLUE_ORB = "blue_orb"
+const PURPLE_ORB = "purple_orb"
+const YELLOW_ORB = "yellow_orb"
