@@ -8,31 +8,44 @@ extends Control
 # dict of 4 items - north east south west orbs
 # for each orb, we need to know it's type and level, and if its unlocked
 
-var orb_info = {
-	"North" : {
+onready var buttonGridContainer = $MarginContainer/TextureRect/ButtonGridContainer
+onready var displayGridContainer = $MarginContainer/TextureRect/DisplayGridContainer
+
+var orbs_info = {
+	"Up" : {
 		"type" : Constants.PINK_ORB,
 		"level" : 1,
-		"unlocked" : true
 	},
-	"East" : {
-		"type" : Constants.PINK_ORB,
+	"Right" : {
+		"type" : Constants.BLUE_ORB,
 		"level" : 1,
-		"unlocked" : true
 	},
-	"South" : {
-		"type" : Constants.PINK_ORB,
-		"level" : 1,
-		"unlocked" : true
+	"Down" : {
+		"type" : null,
+		"level" : 0,
 	},
-	"West" : {
-		"type" : Constants.PINK_ORB,
-		"level" : 1,
-		"unlocked" : true
+	"Left" : {
+		"type" : null,
+		"level" : 0,
 	}
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	update_display()
 	pass # Replace with function body.
+	
+func update_display():
+	for orb in orbs_info.keys():
+		var button = buttonGridContainer.get_node(orb + "OrbButton")
+		var display = displayGridContainer.get_node(orb + "OrbDisplay")
+		
+		var orb_info = orbs_info[orb];
+		
+		if (orb_info["level"] == 0):
+			display.texture = load("res://UI/" + "lock" + ".png")
+		else:
+			display.texture = load("res://UI/" + orbs_info[orb]["type"] + ".png")
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

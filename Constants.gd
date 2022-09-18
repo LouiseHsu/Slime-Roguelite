@@ -43,3 +43,9 @@ const PINK_ORB = "pink_orb"
 const BLUE_ORB = "blue_orb"
 const PURPLE_ORB = "purple_orb"
 const YELLOW_ORB = "yellow_orb"
+
+# orb names
+const UP_ORB = "UpOrb"
+const DOWN_ORB = "DownOrb"
+const LEFT_ORB = "LeftOrb"
+const RIGHT_ORB = "RightOrb"
