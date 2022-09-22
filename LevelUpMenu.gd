@@ -6,7 +6,7 @@ onready var option3 = $ "MarginContainer/Background/VBoxContainer/OptionContaine
 signal chose_weapon(weapon);
 
 func _ready():
-	PlayerStats.connect("level_up", self, "_on_Player_Stats_level_up");
+
 	self.get_child(0).visible = false;
 	pass
 

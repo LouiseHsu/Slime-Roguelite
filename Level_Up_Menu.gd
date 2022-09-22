@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -10,24 +10,36 @@ extends Control
 
 onready var buttonGridContainer = $MarginContainer/TextureRect/ButtonGridContainer
 onready var displayGridContainer = $MarginContainer/TextureRect/DisplayGridContainer
+onready var pointDisplay = $MarginContainer/TextureRect/PointDisplay
 
-var orbs_info = {
-	"Up" : {
-		"type" : Constants.PINK_ORB,
-		"level" : 1,
-	},
-	"Right" : {
-		"type" : Constants.BLUE_ORB,
-		"level" : 1,
-	},
-	"Down" : {
-		"type" : null,
-		"level" : 0,
-	},
-	"Left" : {
-		"type" : null,
-		"level" : 0,
-	}
+var display_info = {
+	"orbs" : [
+		{
+			Constants.UP_ORB : {
+				"type" : Constants.PINK_ORB,
+				"level" : 2,
+				}
+		},
+		{
+			Constants.RIGHT_ORB : {
+				"type" : Constants.BLUE_ORB,
+				"level" : 1,
+					}
+		},
+		{
+			Constants.LEFT_ORB : {
+				"type" : null,
+				"level" : 0,
+					}
+		},
+		{
+			Constants.DOWN_ORB : {
+				"type" : null,
+				"level" : 0,
+					}
+		}
+	],
+	"points" : 2 
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,17 +47,30 @@ func _ready():
 	pass # Replace with function body.
 	
 func update_display():
-	for orb in orbs_info.keys():
-		var button = buttonGridContainer.get_node(orb + "OrbButton")
-		var display = displayGridContainer.get_node(orb + "OrbDisplay")
+	var slots = display_info["orbs"];
+	for slot in slots:
 		
-		var orb_info = orbs_info[orb];
+		var slot_name = slot.keys()[0];
+		var button = buttonGridContainer.get_node(slot_name + "OrbButton")
+		var display = displayGridContainer.get_node(slot_name + "OrbDisplay")
+		
+		var orb_info = slot[slot_name];
 		
 		if (orb_info["level"] == 0):
 			display.texture = load("res://UI/" + "lock" + ".png")
+			
+			button.texture_normal = load("res://UI/" + "unlock-enabled" + ".png")
+			button.texture_pressed = load("res://UI/" + "unlock-pressed" + ".png")
+			button.texture_disabled = load("res://UI/" + "unlock-disabled" + ".png")
+			
 		else:
-			display.texture = load("res://UI/" + orbs_info[orb]["type"] + ".png")
-		
+			display.texture = load("res://UI/" + orb_info["type"] + ".png")
+			button.texture_normal = load("res://UI/" + "upgrade-enabled" + ".png")
+			button.texture_pressed = load("res://UI/" + "upgrade-pressed" + ".png")
+			button.texture_disabled = load("res://UI/" + "upgrade-disabled" + ".png")
+			
+		pointDisplay.bbcode_text = "[center]" + str(display_info["points"]) + "[center]"
+			
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
