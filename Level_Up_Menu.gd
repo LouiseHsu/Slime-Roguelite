@@ -11,40 +11,44 @@ extends CanvasLayer
 onready var buttonGridContainer = $MarginContainer/TextureRect/ButtonGridContainer
 onready var displayGridContainer = $MarginContainer/TextureRect/DisplayGridContainer
 onready var pointDisplay = $MarginContainer/TextureRect/PointDisplay
+var display_info;
+#var display_info = {
+#	"orbs" : [
+#		{
+#			Constants.UP_ORB : {
+#				"type" : Constants.PINK_ORB,
+#				"level" : 2,
+#				}
+#		},
+#		{
+#			Constants.RIGHT_ORB : {
+#				"type" : Constants.BLUE_ORB,
+#				"level" : 1,
+#					}
+#		},
+#		{
+#			Constants.LEFT_ORB : {
+#				"type" : null,
+#				"level" : 0,
+#					}
+#		},
+#		{
+#			Constants.DOWN_ORB : {
+#				"type" : null,
+#				"level" : 0,
+#					}
+#		}
+#	],
+#	"points" : 2 
 
-var display_info = {
-	"orbs" : [
-		{
-			Constants.UP_ORB : {
-				"type" : Constants.PINK_ORB,
-				"level" : 2,
-				}
-		},
-		{
-			Constants.RIGHT_ORB : {
-				"type" : Constants.BLUE_ORB,
-				"level" : 1,
-					}
-		},
-		{
-			Constants.LEFT_ORB : {
-				"type" : null,
-				"level" : 0,
-					}
-		},
-		{
-			Constants.DOWN_ORB : {
-				"type" : null,
-				"level" : 0,
-					}
-		}
-	],
-	"points" : 2 
-}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	update_display()
 	pass # Replace with function body.
+	
+func set_display_info(info):
+	print("hurehruehruehruehruhewr")
+	display_info = info;
+	update_display()
 	
 func update_display():
 	var slots = display_info["orbs"];

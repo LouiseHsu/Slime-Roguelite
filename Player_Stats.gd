@@ -53,3 +53,36 @@ func gain_exp(experience):
 	emit_signal("update_exp_bar", curr_exp, next_level_exp)
 	emit_signal("update_score", experience);
 #	CHANGE SO THAT THERE MAX EXP FOR EASIER BAR SETTING
+
+func get_display_info():
+	var display_info = {
+	"orbs" : [
+		{
+			Constants.UP_ORB : {
+				"type" : Constants.PINK_ORB,
+				"level" : 2,
+				}
+		},
+		{
+			Constants.RIGHT_ORB : {
+				"type" : Constants.BLUE_ORB,
+				"level" : 1,
+					}
+		},
+		{
+			Constants.LEFT_ORB : {
+				"type" : null,
+				"level" : 0,
+					}
+		},
+		{
+			Constants.DOWN_ORB : {
+				"type" : null,
+				"level" : 0,
+					}
+		}
+	],
+	"points" : 2 
+	}
+	
+	return display_info;

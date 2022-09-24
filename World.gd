@@ -11,13 +11,18 @@ onready var player = $Entity_Order/Player;
 func _ready():
 	PlayerStats.connect("level_up", self, "show_level_up_screen");
 	map_generator.connect("next_level", self, "load_next_level")
+
 	
 func _process(delta):
 	handle_input();
 	
 func show_level_up_screen():
 	var display = load("res://Level_Up_Menu.tscn").instance();
+	var info = PlayerStats.get_display_info();
 	self.add_child(display);
+	display.set_display_info(info);
+	
+
 	get_tree().paused = true;
 
 func load_next_level():
