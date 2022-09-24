@@ -22,7 +22,6 @@ func show_level_up_screen():
 	self.add_child(display);
 	display.set_display_info(info);
 	
-
 	get_tree().paused = true;
 
 func load_next_level():

@@ -56,32 +56,24 @@ func gain_exp(experience):
 
 func get_display_info():
 	var display_info = {
-	"orbs" : [
-		{
+	"slots" : {
 			Constants.UP_ORB : {
 				"type" : Constants.PINK_ORB,
 				"level" : 2,
-				}
-		},
-		{
+				},
 			Constants.RIGHT_ORB : {
 				"type" : Constants.BLUE_ORB,
 				"level" : 1,
-					}
-		},
-		{
+				},
 			Constants.LEFT_ORB : {
 				"type" : null,
 				"level" : 0,
-					}
-		},
-		{
+				},
 			Constants.DOWN_ORB : {
 				"type" : null,
 				"level" : 0,
-					}
-		}
-	],
+				}
+	},
 	"points" : 2 
 	}
 	

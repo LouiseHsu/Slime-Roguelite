@@ -226,7 +226,7 @@ color = Color( 0.882353, 0.882353, 0.882353, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -0.293
+volume_db = -47.927
 autoplay = true
 
 [connection signal="damage_taken" from="Entity_Order/Player" to="." method="_on_Player_damage_taken"]
