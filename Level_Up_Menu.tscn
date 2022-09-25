@@ -1,12 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://UI/level-up-menu.png" type="Texture" id=1]
+[ext_resource path="res://OrbButton.gd" type="Script" id=2]
 [ext_resource path="res://UI/orb-selection.png" type="Texture" id=3]
 [ext_resource path="res://Level_Up_Menu.gd" type="Script" id=4]
+[ext_resource path="res://UI/pink-orb-button-pressed.png" type="Texture" id=5]
 [ext_resource path="res://UI/lock.png" type="Texture" id=6]
-[ext_resource path="res://UI/blue_orb.png" type="Texture" id=8]
+[ext_resource path="res://UI/purple-orb-button-pressed.png" type="Texture" id=7]
+[ext_resource path="res://UI/orb-selection-blank.png" type="Texture" id=8]
 [ext_resource path="res://UI/pink_orb.png" type="Texture" id=9]
 [ext_resource path="res://Fonts/Essential.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://UI/blue-orb-button-pressed.png" type="Texture" id=11]
+[ext_resource path="res://UI/yellow-orb-button-pressed.png" type="Texture" id=12]
+[ext_resource path="res://UI/pink-orb-button.png" type="Texture" id=13]
+[ext_resource path="res://UI/purple-orb-button.png" type="Texture" id=14]
+[ext_resource path="res://UI/yellow-orb-button.png" type="Texture" id=15]
+[ext_resource path="res://UI/blue-orb-button.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=2]
 size = 11
@@ -68,6 +77,42 @@ bbcode_text = "[center]1[center]"
 text = "1"
 scroll_active = false
 
+[node name="SelectionContainer" type="GridContainer" parent="MarginContainer/TextureRect/DisplayGridContainer/UpOrbDisplay"]
+visible = false
+margin_right = 26.0
+margin_bottom = 26.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 2
+
+[node name="PinkOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/UpOrbDisplay/SelectionContainer"]
+margin_right = 12.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 13 )
+
+[node name="PurpleOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/UpOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_right = 26.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 14 )
+
+[node name="YellowOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/UpOrbDisplay/SelectionContainer"]
+margin_top = 14.0
+margin_right = 12.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 15 )
+
+[node name="BlueOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/UpOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 26.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 16 )
+
 [node name="RightOrbDisplay" type="TextureRect" parent="MarginContainer/TextureRect/DisplayGridContainer"]
 margin_left = 41.0
 margin_right = 67.0
@@ -89,6 +134,42 @@ bbcode_text = "[center]1[center]"
 text = "1"
 scroll_active = false
 
+[node name="SelectionContainer" type="GridContainer" parent="MarginContainer/TextureRect/DisplayGridContainer/RightOrbDisplay"]
+visible = false
+margin_right = 26.0
+margin_bottom = 26.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 2
+
+[node name="PinkOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/RightOrbDisplay/SelectionContainer"]
+margin_right = 12.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 13 )
+
+[node name="PurpleOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/RightOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_right = 26.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 14 )
+
+[node name="YellowOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/RightOrbDisplay/SelectionContainer"]
+margin_top = 14.0
+margin_right = 12.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 15 )
+
+[node name="BlueOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/RightOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 26.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 16 )
+
 [node name="LeftOrbDisplay" type="TextureRect" parent="MarginContainer/TextureRect/DisplayGridContainer"]
 margin_top = 36.0
 margin_right = 26.0
@@ -109,6 +190,42 @@ bbcode_enabled = true
 bbcode_text = "[center]1[center]"
 text = "1"
 scroll_active = false
+
+[node name="SelectionContainer" type="GridContainer" parent="MarginContainer/TextureRect/DisplayGridContainer/LeftOrbDisplay"]
+visible = false
+margin_right = 26.0
+margin_bottom = 26.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 2
+
+[node name="PinkOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/LeftOrbDisplay/SelectionContainer"]
+margin_right = 12.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 13 )
+
+[node name="PurpleOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/LeftOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_right = 26.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 14 )
+
+[node name="YellowOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/LeftOrbDisplay/SelectionContainer"]
+margin_top = 14.0
+margin_right = 12.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 15 )
+
+[node name="BlueOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/LeftOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 26.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 16 )
 
 [node name="DownOrbDisplay" type="TextureRect" parent="MarginContainer/TextureRect/DisplayGridContainer"]
 margin_left = 41.0
@@ -132,6 +249,42 @@ bbcode_text = "[center]1[center]"
 text = "1"
 scroll_active = false
 
+[node name="SelectionContainer" type="GridContainer" parent="MarginContainer/TextureRect/DisplayGridContainer/DownOrbDisplay"]
+visible = false
+margin_right = 26.0
+margin_bottom = 26.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 2
+
+[node name="PinkOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/DownOrbDisplay/SelectionContainer"]
+margin_right = 12.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 13 )
+
+[node name="PurpleOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/DownOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_right = 26.0
+margin_bottom = 12.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 14 )
+
+[node name="YellowOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/DownOrbDisplay/SelectionContainer"]
+margin_top = 14.0
+margin_right = 12.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 15 )
+
+[node name="BlueOrbSelect" type="TextureButton" parent="MarginContainer/TextureRect/DisplayGridContainer/DownOrbDisplay/SelectionContainer"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 26.0
+margin_bottom = 26.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 16 )
+
 [node name="ButtonGridContainer" type="GridContainer" parent="MarginContainer/TextureRect"]
 margin_left = 14.0
 margin_top = 42.0
@@ -142,6 +295,7 @@ custom_constants/hseparation = 3
 columns = 2
 
 [node name="UpOrbButton" type="TextureButton" parent="MarginContainer/TextureRect/ButtonGridContainer"]
+script = ExtResource( 2 )
 
 [node name="RightOrbButton" type="TextureButton" parent="MarginContainer/TextureRect/ButtonGridContainer"]
 margin_left = 3.0
@@ -166,3 +320,5 @@ custom_colors/default_color = Color( 0.211765, 0.211765, 0.415686, 1 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 fit_content_height = true
+
+[connection signal="button_pressed" from="MarginContainer/TextureRect/ButtonGridContainer/UpOrbButton" to="." method="_on_UpOrbButton_button_pressed"]

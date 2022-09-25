@@ -1,45 +1,39 @@
 extends CanvasLayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-# dict of 4 items - north east south west orbs
-# for each orb, we need to know it's type and level, and if its unlocked
-
 onready var buttonGridContainer = $MarginContainer/TextureRect/ButtonGridContainer
 onready var displayGridContainer = $MarginContainer/TextureRect/DisplayGridContainer
 onready var pointDisplay = $MarginContainer/TextureRect/PointDisplay
-var display_info;
-#var display_info = {
-#	"slots" : {
-#			Constants.UP_ORB : {
-#				"type" : Constants.PINK_ORB,
-#				"level" : 2,
-#				},
-#			Constants.RIGHT_ORB : {
-#				"type" : Constants.BLUE_ORB,
-#				"level" : 1,
-#				},
-#			Constants.LEFT_ORB : {
-#				"type" : null,
-#				"level" : 0,
-#				},
-#			Constants.DOWN_ORB : {
-#				"type" : null,
-#				"level" : 0,
-#				}
-#	},
-#	"points" : 2 
-#	}
+var display_info = {
+	"slots" : {
+			Constants.UP_ORB : {
+				"type" : null,
+				"level" : 0,
+				},
+			Constants.RIGHT_ORB : {
+				"type" : Constants.BLUE_ORB,
+				"level" : 1,
+				},
+			Constants.LEFT_ORB : {
+				"type" : null,
+				"level" : 0,
+				},
+			Constants.DOWN_ORB : {
+				"type" : null,
+				"level" : 0,
+				}
+	},
+	"points" : 2 
+	}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for button in buttonGridContainer.get_children():
+		button.connect("pressed", self, "_on_Slot_Button_Pressed", [button])
+	
+	update_display()
 	pass # Replace with function body.
 	
 func set_display_info(info):
-	print("hurehruehruehruehruhewr")
 	display_info = info;
 	update_display()
 	
@@ -68,9 +62,36 @@ func update_display():
 		pointDisplay.bbcode_text = "[center]" + str(display_info["points"]) + "[center]"
 			
 
-func upgrade(orb): {
+func update_info(event, slot, type = null): 
+	var slots = display_info.slots;
+	if event == "upgrade":
+		if (display_info.points > 0):
+			slots[slot]["level"] = slots[slot]["level"] + 1;
+			display_info.points =  display_info.points - 1;
+	else:
+		if (display_info.points > 0):
+			slots[slot]["level"] = 1;
+			slots[slot]["type"] = type;
+			display_info.points =  display_info.points - 1;
+	print(display_info)
+	update_display();
+
+func _on_Slot_Button_Pressed(button):
+	var slot = button.name.trim_suffix("OrbButton")
+	var info = display_info["slots"][slot]
+	var curr_display = displayGridContainer.get_node(slot + "OrbDisplay")
+	print(slot)
+	var selection_display = curr_display.get_node("SelectionContainer")
+	if (info.type == null) :
+#		change to selection display
+		curr_display.texture = load("res://UI/" + "orb-selection-blank" + ".png")
+		selection_display.visible = true;
+		for button in selection_display.get_children():
+			button.connect("pressed", self, "_on_Selection_Button_pressed", [button, slot])
+
+func _on_Selection_Button_pressed(b, slot): 
+	var type = b.name.trim_suffix("OrbSelect") + "_orb";
 	
-}
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	b.get_parent().visible = false;
+	update_info("unlock", slot, type);
+		
