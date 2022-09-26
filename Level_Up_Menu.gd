@@ -55,6 +55,7 @@ func update_display():
 			
 		else:
 			display.texture = load("res://UI/" + orb_info["type"] + ".png")
+			display.get_node("RichTextLabel").bbcode_text = "[center]" + str(orb_info["level"]) + "[center]"
 			button.texture_normal = load("res://UI/" + "upgrade-enabled" + ".png")
 			button.texture_pressed = load("res://UI/" + "upgrade-pressed" + ".png")
 			button.texture_disabled = load("res://UI/" + "upgrade-disabled" + ".png")
@@ -88,10 +89,18 @@ func _on_Slot_Button_Pressed(button):
 		selection_display.visible = true;
 		for button in selection_display.get_children():
 			button.connect("pressed", self, "_on_Selection_Button_pressed", [button, slot])
+			
+		for slot_button in buttonGridContainer.get_children():
+			slot_button.disabled = true;
+	else:
+		update_info("upgrade", slot)
 
 func _on_Selection_Button_pressed(b, slot): 
 	var type = b.name.trim_suffix("OrbSelect") + "_orb";
 	
 	b.get_parent().visible = false;
+	for slot_button in buttonGridContainer.get_children():
+		slot_button.disabled = false;
+	print(b.get_parent().get_path())
 	update_info("unlock", slot, type);
 		

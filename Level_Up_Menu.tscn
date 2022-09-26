@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/level-up-menu.png" type="Texture" id=1]
 [ext_resource path="res://OrbButton.gd" type="Script" id=2]
-[ext_resource path="res://UI/orb-selection.png" type="Texture" id=3]
 [ext_resource path="res://Level_Up_Menu.gd" type="Script" id=4]
 [ext_resource path="res://UI/pink-orb-button-pressed.png" type="Texture" id=5]
 [ext_resource path="res://UI/lock.png" type="Texture" id=6]
@@ -233,7 +232,6 @@ margin_top = 36.0
 margin_right = 67.0
 margin_bottom = 62.0
 rect_min_size = Vector2( 26, 26 )
-texture = ExtResource( 3 )
 stretch_mode = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/TextureRect/DisplayGridContainer/DownOrbDisplay"]
@@ -290,6 +288,8 @@ margin_left = 14.0
 margin_top = 42.0
 margin_right = 93.0
 margin_bottom = 86.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
 custom_constants/vseparation = 28
 custom_constants/hseparation = 3
 columns = 2
