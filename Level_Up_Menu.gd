@@ -76,6 +76,7 @@ func update_info(event, slot, type = null):
 			display_info.points =  display_info.points - 1;
 	print(display_info)
 	update_display();
+	return display_info;
 
 func _on_Slot_Button_Pressed(button):
 	var slot = button.name.trim_suffix("OrbButton")
@@ -104,3 +105,7 @@ func _on_Selection_Button_pressed(b, slot):
 	print(b.get_parent().get_path())
 	update_info("unlock", slot, type);
 		
+
+
+func _on_CloseButton_pressed():
+	pass # Replace with function body.
