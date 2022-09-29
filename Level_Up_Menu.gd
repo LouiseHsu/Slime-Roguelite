@@ -25,6 +25,8 @@ var display_info = {
 	"points" : 2 
 	}
 
+signal close;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for button in buttonGridContainer.get_children():
@@ -32,6 +34,9 @@ func _ready():
 	
 	update_display()
 	pass # Replace with function body.
+	
+func get_updated_info():
+	return display_info;
 	
 func set_display_info(info):
 	display_info = info;
@@ -108,4 +113,6 @@ func _on_Selection_Button_pressed(b, slot):
 
 
 func _on_CloseButton_pressed():
+	print("hiu")
+	emit_signal("close")
 	pass # Replace with function body.

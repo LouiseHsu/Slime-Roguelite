@@ -4,9 +4,7 @@ onready var map_generator = $MapGenerator;
 onready var entity_order = $Entity_Order;
 onready var player = $Entity_Order/Player;
 
-#func ready():
-#	PlayerStats.connect("level_up", self, "show_level_up_screen");
-#	map_generator.connect("next_level", self, "load_next_level")
+var level_up_menu;
 	
 func _ready():
 	PlayerStats.connect("level_up", self, "show_level_up_screen");
@@ -21,9 +19,17 @@ func show_level_up_screen():
 	var info = PlayerStats.get_display_info();
 	self.add_child(display);
 	display.set_display_info(info);
+	level_up_menu = display;
+	display.connect("close", self, "close_level_up_screen")
+
 	
 	get_tree().paused = true;
-
+	
+func close_level_up_screen():
+	print("akjsdhakdhskasjdhjkh,mhkjahkjh")
+	var info = level_up_menu.get_updated_info();
+	print(info);
+	
 func load_next_level():
 	print("hewwodasdasdasd")
 	map_generator.load_next_map();

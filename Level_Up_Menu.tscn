@@ -323,7 +323,7 @@ custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 fit_content_height = true
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="CloseButton" type="TextureButton" parent="."]
 margin_left = 110.0
 margin_top = 50.0
 margin_right = 116.0
@@ -333,3 +333,5 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 17 )
 
 [connection signal="button_pressed" from="MarginContainer/TextureRect/ButtonGridContainer/UpOrbButton" to="." method="_on_UpOrbButton_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_TextureButton_pressed"]
