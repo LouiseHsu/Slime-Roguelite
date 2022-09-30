@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Weapons/Charge_Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Weapons/Blue_Orb.gd" type="Script" id=1]
 [ext_resource path="res://Projectiles/ChargedProjectile.png" type="Texture" id=2]
 [ext_resource path="res://Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Projectiles/Projectile.gd" type="Script" id=4]

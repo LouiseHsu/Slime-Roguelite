@@ -1,30 +1,23 @@
 extends Node2D
 
-const front_weapon = preload("res://Weapons/front_weapon.tscn");
-const circle_weapon = preload("res://Weapons/Circle_Weapon.tscn");
-const side_weapon = preload("res://Weapons/Side_Weapon.tscn");
-const charge_weapon = preload("res://Weapons/Charge_Weapon.tscn");
-const shield_weapon = preload("res://Weapons/shield_weapon.tscn");
+const blue_orb = preload("res://Weapons/Blue_Orb.tscn");
+const shield_weapon = preload("res://Weapons/Shield_Weapon.tscn");
 
 const ALL_WEAPONS = {
-	"front_weapon" : front_weapon,
-	"side_weapon" : side_weapon,
-	"circle_weapon": circle_weapon,
-	"charge_weapon": charge_weapon,
+	"blue_orb": blue_orb,
 	"shield_weapon": shield_weapon
 }
 
 var weapon_list = {
-	"front_weapon" : null,
-	"side_weapon" : null,
-	"circle_weapon": null,
-	"charge_weapon": null,
+	"blue_orb": null,
 	"shield_weapon": null
 }
 
 func _ready():
-	add_weapon("charge_weapon");
-	add_weapon("shield_weapon");
+	
+#	add_weapon("blue_orb");
+#	add_weapon("shield_weapon");
+	update_weapons()
 	print("added first weapon")
 
 func add_weapon(chosen_weapon):
@@ -40,3 +33,37 @@ func add_weapon(chosen_weapon):
 		PlayerStats.add_weapon(chosen_weapon);
 		print("shouldve hit here")
 		weapon_list[chosen_weapon] = weapon;
+		
+func update_weapons():
+	var slot_info = PlayerStats.get_display_info()["slots"];
+	
+	var up_slot = slot_info[Constants.UP_ORB];
+	
+	var weapon = load("res://Weapons/" + up_slot["type"] + ".tscn").instance();
+	self.call_deferred("add_child", weapon);
+	weapon.init(1, PlayerStats.damage); 
+	
+	
+
+#var slot_info = {
+#"slots" : {
+#		Constants.UP_ORB : {
+#			"type" : Constants.BLUE_ORB,
+#			"level" : 1,
+#			},
+#		Constants.RIGHT_ORB : {
+#			"type" : null,
+#			"level" : 0,
+#			},
+#		Constants.LEFT_ORB : {
+#			"type" : null,
+#			"level" : 0,
+#			},
+#		Constants.DOWN_ORB : {
+#			"type" : null,
+#			"level" : 0,
+#			}
+#},
+#"points" : 10 
+#}
+	

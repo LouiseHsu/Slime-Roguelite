@@ -20,8 +20,8 @@ var owned_weapons = [];
 var slot_info = {
 "slots" : {
 		Constants.UP_ORB : {
-			"type" : null,
-			"level" : 0,
+			"type" : Constants.BLUE_ORB,
+			"level" : 1,
 			},
 		Constants.RIGHT_ORB : {
 			"type" : null,
@@ -47,12 +47,6 @@ func add_weapon(weapon):
 	
 	owned_weapons.append(wep_struct);
 	emit_signal("weapons_update");
-
-#func level_up_weapon(weapon):
-#	for wep in owned_weapons :
-#		if (weapon == wep["name"]) :
-#			wep["level"] = wep["level"] + 1;
-#			emit_signal("weapons_update");
 
 func take_damage(damage):
 	health -= damage;
