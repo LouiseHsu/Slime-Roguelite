@@ -10,7 +10,6 @@ func _ready():
 	PlayerStats.connect("level_up", self, "show_level_up_screen");
 	map_generator.connect("next_level", self, "load_next_level")
 
-	
 func _process(delta):
 	handle_input();
 	
@@ -22,13 +21,14 @@ func show_level_up_screen():
 	level_up_menu = display;
 	display.connect("close", self, "close_level_up_screen")
 
-	
 	get_tree().paused = true;
 	
 func close_level_up_screen():
-	print("akjsdhakdhskasjdhjkh,mhkjahkjh")
 	var info = level_up_menu.get_updated_info();
-	print(info);
+	PlayerStats.set_display_info(info)
+	level_up_menu.queue_free();
+	
+	get_tree().paused = false;
 	
 func load_next_level():
 	print("hewwodasdasdasd")

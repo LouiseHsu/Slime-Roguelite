@@ -54,6 +54,9 @@ func gain_exp(experience):
 	emit_signal("update_score", experience);
 #	CHANGE SO THAT THERE MAX EXP FOR EASIER BAR SETTING
 
+func set_display_info(info):
+	pass;
+
 func get_display_info():
 	var display_info = {
 	"slots" : {

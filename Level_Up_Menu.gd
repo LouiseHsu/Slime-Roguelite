@@ -79,7 +79,6 @@ func update_info(event, slot, type = null):
 			slots[slot]["level"] = 1;
 			slots[slot]["type"] = type;
 			display_info.points =  display_info.points - 1;
-	print(display_info)
 	update_display();
 	return display_info;
 
@@ -87,7 +86,6 @@ func _on_Slot_Button_Pressed(button):
 	var slot = button.name.trim_suffix("OrbButton")
 	var info = display_info["slots"][slot]
 	var curr_display = displayGridContainer.get_node(slot + "OrbDisplay")
-	print(slot)
 	var selection_display = curr_display.get_node("SelectionContainer")
 	if (info.type == null) :
 #		change to selection display
@@ -107,12 +105,9 @@ func _on_Selection_Button_pressed(b, slot):
 	b.get_parent().visible = false;
 	for slot_button in buttonGridContainer.get_children():
 		slot_button.disabled = false;
-	print(b.get_parent().get_path())
 	update_info("unlock", slot, type);
-		
 
 
 func _on_CloseButton_pressed():
-	print("hiu")
 	emit_signal("close")
 	pass # Replace with function body.
