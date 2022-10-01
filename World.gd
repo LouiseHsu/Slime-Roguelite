@@ -31,7 +31,6 @@ func close_level_up_screen():
 	get_tree().paused = false;
 	
 func load_next_level():
-	print("hewwodasdasdasd")
 	map_generator.load_next_map();
 	save_game();
 	entity_order.clear_all();

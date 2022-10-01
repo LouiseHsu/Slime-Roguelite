@@ -17,6 +17,29 @@ var health = max_health;
 
 var owned_weapons = [];
 
+var display_info = {
+"slots" : {
+		Constants.UP_ORB : {
+			"type" : null,
+			"level" : 0,
+			},
+		Constants.RIGHT_ORB : {
+			"type" : null,
+			"level" : 0,
+			},
+		Constants.LEFT_ORB : {
+			"type" : null,
+			"level" : 0,
+			},
+		Constants.DOWN_ORB : {
+			"type" : null,
+			"level" : 0,
+			}
+},
+"points" : 2 
+}
+	
+
 func add_weapon(weapon):
 	var wep_struct = {
 		"name" : weapon,
@@ -58,26 +81,4 @@ func set_display_info(info):
 	pass;
 
 func get_display_info():
-	var display_info = {
-	"slots" : {
-			Constants.UP_ORB : {
-				"type" : Constants.PINK_ORB,
-				"level" : 2,
-				},
-			Constants.RIGHT_ORB : {
-				"type" : Constants.BLUE_ORB,
-				"level" : 1,
-				},
-			Constants.LEFT_ORB : {
-				"type" : null,
-				"level" : 0,
-				},
-			Constants.DOWN_ORB : {
-				"type" : null,
-				"level" : 0,
-				}
-	},
-	"points" : 2 
-	}
-	
 	return display_info;
