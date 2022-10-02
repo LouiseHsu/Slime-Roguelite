@@ -17,7 +17,7 @@ var health = max_health;
 
 var owned_weapons = [];
 
-var display_info = {
+var slot_info = {
 "slots" : {
 		Constants.UP_ORB : {
 			"type" : null,
@@ -39,7 +39,6 @@ var display_info = {
 "points" : 2 
 }
 	
-
 func add_weapon(weapon):
 	var wep_struct = {
 		"name" : weapon,
@@ -78,7 +77,10 @@ func gain_exp(experience):
 #	CHANGE SO THAT THERE MAX EXP FOR EASIER BAR SETTING
 
 func set_display_info(info):
+	slot_info = info;
+	emit_signal("weapons_update");
+	print(info)
 	pass;
 
 func get_display_info():
-	return display_info;
+	return slot_info;
