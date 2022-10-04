@@ -199,14 +199,10 @@ func on_death():
 #	add save fcn here?
 	get_tree().reload_current_scene();
 	
-func _on_LevelUpMenu_chose_weapon(chosen_weapon):
-	weapons.add_weapon(chosen_weapon);
-	
 func save():
 	var save_dict = {
 		"level" : PlayerStats.level,
-		"curr_exp" : PlayerStats.curr_exp,
-		"owned_weapons" : PlayerStats.owned_weapons
+		"curr_exp" : PlayerStats.curr_exp
 	}
 	
 	return save_dict;

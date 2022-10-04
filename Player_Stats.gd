@@ -36,23 +36,8 @@ var slot_info = {
 			"level" : 0,
 			}
 },
-"points" : 2 
+"points" : 10 
 }
-	
-func add_weapon(weapon):
-	var wep_struct = {
-		"name" : weapon,
-		"level" : 1
-	}
-	
-	owned_weapons.append(wep_struct);
-	emit_signal("weapons_update");
-
-func level_up_weapon(weapon):
-	for wep in owned_weapons :
-		if (weapon == wep["name"]) :
-			wep["level"] = wep["level"] + 1;
-			emit_signal("weapons_update");
 
 func take_damage(damage):
 	health -= damage;
