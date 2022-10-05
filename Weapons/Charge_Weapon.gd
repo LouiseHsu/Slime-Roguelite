@@ -5,9 +5,8 @@ func physics_process(delta):
 		spawn_projectiles(delta);
 
 func spawn_projectiles(delta):
-	print("hi")
 	var projectile = load("res://Projectiles/ChargedProjectile.tscn").instance();
-	var curr_frame = $AnimatedSprite.frame
+	var curr_frame = $Sprite.frame
 	projectile.init(self.p_velocity, (1 + curr_frame) * self.damage, curr_frame);
 	get_tree().get_root().get_node("World").add_child(projectile);
-	projectile.transform = $AnimatedSprite.global_transform
+	projectile.transform = $Sprite.global_transform
