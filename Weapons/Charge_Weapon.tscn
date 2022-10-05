@@ -153,6 +153,7 @@ collision_mask = 0
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Projectile"]
+visible = false
 position = Vector2( 0, 2 )
 texture = ExtResource( 2 )
 hframes = 4
