@@ -10,15 +10,17 @@ var level = 1;
 
 var active = false;
 var firing_timer = 0;
+var slot;
 
 var projectile_scene = preload("res://Projectiles/Projectile.tscn") # Path to bullet scene
 
 func _ready():
 	self.sprite_frame = sprite.frame;
 	
-func init(fire_rate, damage):
+func init(fire_rate, damage, slot):
 	self.fire_rate = fire_rate * (1 + ((level - 1) * 0.1));
 	self.damage = damage * (1 + ((level - 1) * 0.1));
+	self.slot = slot;
 	
 func activate(direction):
 	self.active = true;
@@ -32,7 +34,7 @@ func level_up():
 	level += 1;
 	
 	print(self.name)
-	init(self.fire_rate, self.damage);
+	init(self.fire_rate, self.damage, slot);
 
 func _physics_process(delta):
 	physics_process(delta);

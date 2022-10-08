@@ -1,11 +1,11 @@
 extends Node2D
 
 const blue_orb = preload("res://Weapons/Blue_Orb.tscn");
-const shield_weapon = preload("res://Weapons/Pink_Orb.tscn");
+const pink_orb = preload("res://Weapons/Pink_Orb.tscn");
 
 const ALL_WEAPONS = {
 	"blue_orb": blue_orb,
-	"pink_orb": shield_weapon
+	"pink_orb": pink_orb
 }
 
 var weapon_list = {
@@ -19,15 +19,15 @@ func _ready():
 
 func update_weapons():
 	var slot_info = PlayerStats.get_display_info()["slots"];
-	
-	var up_slot = slot_info[Constants.UP_ORB];
+	Constants.delete_children(self);
 
-	
-	for slot in slot_info.values():
-		if (slot["type"] != null):
-			var weapon = load("res://Weapons/" + slot["type"] + ".tscn").instance();
+	for slot in slot_info:
+		var curr_slot = slot_info[slot];
+		if (curr_slot["type"] != null):
+			var weapon = load("res://Weapons/" + curr_slot["type"] + ".tscn").instance();
 			self.call_deferred("add_child", weapon);
-			weapon.init(slot["level"], PlayerStats.damage); 
+			print(slot)
+			weapon.init(curr_slot["level"], PlayerStats.damage, slot);
 		
 
 #var slot_info = {
