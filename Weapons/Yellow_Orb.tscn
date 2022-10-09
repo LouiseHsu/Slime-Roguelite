@@ -2,21 +2,7 @@
 
 [ext_resource path="res://Light/light3.jpg" type="Texture" id=2]
 [ext_resource path="res://Projectiles/ChargedProjectile2.png" type="Texture" id=4]
-
-[sub_resource type="GDScript" id=12]
-script/source = "extends \"res://Weapons/Weapon.gd\"
-
-func physics_process(delta):
-	if Input.is_action_just_pressed(\"Charge Weapon\") :
-		spawn_projectiles(delta);
-
-func spawn_projectiles(delta):
-	var projectile = load(\"res://Projectiles/ChargedProjectile.tscn\").instance();
-	var curr_frame = $Sprite.frame
-	projectile.init(self.p_velocity, (1 + curr_frame) * self.damage, curr_frame);
-	get_tree().get_root().get_node(\"World\").add_child(projectile);
-	projectile.transform = $Sprite.global_transform
-"
+[ext_resource path="res://Weapons/Blue_Orb.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=6]
 resource_name = "New Anim"
@@ -122,9 +108,8 @@ tracks/3/keys = {
 "values": [ 0.1 ]
 }
 
-[node name="Pink_Orb" type="Node2D"]
-rotation = 4.71239
-script = SubResource( 12 )
+[node name="Yellow_Orb" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "New Anim"
@@ -132,7 +117,6 @@ autoplay = "New Anim"
 anims/RESET = SubResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.988235, 0.647059, 1, 1 )
 position = Vector2( 14, -16 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, 2 )

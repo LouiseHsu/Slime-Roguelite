@@ -7,6 +7,7 @@ func physics_process(delta):
 		spawn_projectiles(delta);
 
 func spawn_projectiles(delta):
+	print("hi")
 	var projectile = load("res://Projectiles/ChargedProjectile.tscn").instance();
 	var curr_frame = $Sprite.frame
 	projectile.init(self.p_velocity, (1 + curr_frame) * self.damage, curr_frame);
