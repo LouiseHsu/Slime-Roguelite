@@ -45,7 +45,6 @@ func handle_input():
 		map_generator.reload_map();
 		entity_order.clear_all();
 	if Input.is_action_just_released("Load"):
-		print("HI")
 		entity_order.clear_all();
 		load_game();
 		

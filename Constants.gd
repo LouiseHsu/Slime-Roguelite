@@ -10,6 +10,9 @@ const PINK_SLIME = "pinkslime"
 
 const ENEMYS_LIST = [BLUE_SLIME, GREEN_SLIME, PINK_SLIME];
 
+func get_player():
+	print(get_tree().get_root().get_node("World/Entity_Order/Player"))
+	return get_tree().get_root().get_node("World/Entity_Order/Player")
 
 func delete_children(node):
 	for n in node.get_children():

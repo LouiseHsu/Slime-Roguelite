@@ -9,7 +9,7 @@ func spawn_projectiles(delta):
 			var projectile = load("res://Projectiles/OrbitProjectile.tscn").instance();
 			projectile.init(Vector2(0, 0), self.damage, self.sprite_frame);
 			add_child(projectile);
-			var player_pos = get_parent().global_transform;
+			var player_pos = Constants.get_player().global_transform;
 			
 
 			projectile.transform = player_pos;
