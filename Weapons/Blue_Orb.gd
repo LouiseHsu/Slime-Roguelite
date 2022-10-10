@@ -1,7 +1,9 @@
 extends "res://Weapons/Weapon.gd"
 
 func physics_process(delta):
+	
 	if Input.is_action_just_pressed(slot) :
+		print(slot)
 		spawn_projectiles(delta);
 
 func spawn_projectiles(delta):

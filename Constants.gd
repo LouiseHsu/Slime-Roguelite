@@ -39,7 +39,7 @@ const PURPLE_ORB = "purple_orb"
 const YELLOW_ORB = "yellow_orb"
 
 # orb names
-const UP_ORB = "Up_Slot"
-const DOWN_ORB = "Down_Slot"
-const LEFT_ORB = "Left_Slot"
-const RIGHT_ORB = "Right_Slot"
+const UP_ORB = "UpOrb"
+const DOWN_ORB = "DownOrb"
+const LEFT_ORB = "LeftOrb"
+const RIGHT_ORB = "RightOrb"
