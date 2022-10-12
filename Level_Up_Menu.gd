@@ -46,8 +46,8 @@ func update_display():
 	var slots = display_info["slots"];
 	for slot in slots.keys():
 
-		var button = buttonGridContainer.get_node(slot + "OrbButton")
-		var display = displayGridContainer.get_node(slot + "OrbDisplay")
+		var button = buttonGridContainer.get_node(slot + "Button")
+		var display = displayGridContainer.get_node(slot + "Display")
 		
 		var orb_info = slots[slot];
 		
@@ -83,9 +83,9 @@ func update_info(event, slot, type = null):
 	return display_info;
 
 func _on_Slot_Button_Pressed(button):
-	var slot = button.name.trim_suffix("OrbButton")
+	var slot = button.name.trim_suffix("Button")
 	var info = display_info["slots"][slot]
-	var curr_display = displayGridContainer.get_node(slot + "OrbDisplay")
+	var curr_display = displayGridContainer.get_node(slot + "Display")
 	var selection_display = curr_display.get_node("SelectionContainer")
 	if (info.type == null) :
 #		change to selection display
