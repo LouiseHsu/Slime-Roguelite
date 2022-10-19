@@ -20,7 +20,7 @@ var owned_weapons = [];
 var slot_info = {
 "slots" : {
 		Constants.UP_ORB : {
-			"type" : Constants.BLUE_ORB,
+			"type" : Constants.YELLOW_ORB,
 			"level" : 1,
 			},
 		Constants.RIGHT_ORB : {

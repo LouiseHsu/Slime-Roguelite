@@ -2,15 +2,18 @@ extends Node2D
 
 const blue_orb = preload("res://Weapons/Blue_Orb.tscn");
 const pink_orb = preload("res://Weapons/Pink_Orb.tscn");
+const yellow_orb = preload("res://Weapons/Yellow_Orb.tscn");
 
 const ALL_WEAPONS = {
 	"blue_orb": blue_orb,
-	"pink_orb": pink_orb
+	"pink_orb": pink_orb,
+	"yellow_orb": yellow_orb
 }
 
 var weapon_list = {
 	"blue_orb": null,
-	"pink_orb": null
+	"pink_orb": null,
+	"yellow_orb": null,
 }
 
 func _ready():
