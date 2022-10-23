@@ -22,7 +22,7 @@ var display_info = {
 				"level" : 0,
 				}
 	},
-	"points" : 2 
+	"points" : 0 
 	}
 
 signal close;
